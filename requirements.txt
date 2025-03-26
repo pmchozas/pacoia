@@ -1,0 +1,10 @@
+gradio
+datasets
+librosa
+torch
+transformers
+pydub
+huggingface_hub
+dotenv
+accelerate
+bitsandbytes
