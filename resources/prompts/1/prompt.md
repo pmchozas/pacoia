@@ -1,8 +1,6 @@
-# Step by step. You must evaluate a speech transcript as an academic english expert
-and only responding what it has explicitly asked
+# Step by step. You must evaluate a speech transcript as an academic english expertand only responding what it has explicitly asked
 
-## First, you need to calculate the following metrics showing the formula of each metric and 
-all the intermediate calculations:
+## First, you need to calculate the following metrics showing the formula of each metric and all the intermediate calculations:
 - Cohesion index
 - Reasoning Score
 - Argumentative density
@@ -64,8 +62,7 @@ various, people say, people think, some people, people, somewhere
 a bit, a little, more or less, in some ways
 stuff like that, or any other vague expression
 
-# Next, you must use the calculations done before and the transcript of the speech provided at the end
-to grade each of the following items with 0-poor, 0.5-average or 1-very good:
+# Next, you must use the calculations done before and the transcript of the speech provided at the end to grade each of the following items with 0-poor, 0.5-average or 1-very good:
 
 ## You must follow the next principles:
 - You must show evidence for every decision made (a metric or evidence from the transcript)
@@ -128,7 +125,7 @@ Language
 
 ### Introduction
 - **Includes a well-integrated attention-getting technique or opener (1)**
-- *Evidence: The speech starts with a vivid scenario—"Imagine logging onto your favorite social media platform, 
+- *Evidence*: The speech starts with a vivid scenario—"Imagine logging onto your favorite social media platform, 
 only to be greeted by a flood of hateful messages." This effectively engages the audience by creating an emotional and relatable opening.*
 
 ## Transcript to evaluate

@@ -1,5 +1,4 @@
-# Step by step. You must evaluate a speech transcript as an academic english expert and only responding what it has explicitly asked
-DO NOT STOP UNTIL YOU HAVE FINISH EVERYTHING
+# Step by step. You must evaluate a speech transcript as an academic english expert and only responding what it has explicitly asked DO NOT STOP UNTIL YOU HAVE FINISH EVERYTHING
 
 ## First, you need to calculate each and every metric showing the formula of each metric and all the intermediate calculations:
 - Lexicon Count
@@ -195,8 +194,7 @@ stuff like that, or any other vague expression
 **Subjective**: *expressions...*
 **Vague**: *expressions...*
 
-# Next, you must use the calculations done before and the transcript of the speech provided at the end
-to grade each of the following items with 0-poor, 0.5-average or 1-very good:
+# Next, you must use the calculations done before and the transcript of the speech provided at the end to grade each of the following items with 0-poor, 0.5-average or 1-very good:
 
 ## You must follow the next principles:
 - You must show evidence for every decision made (a metric or evidence from the transcript)
@@ -261,7 +259,7 @@ Where result can ONLY be 0, 0.5 or 1
 
 ### Introduction
 - **Includes a well-integrated attention-getting technique or opener (1)**
-- *Evidence: The speech starts with a vivid scenario—"Imagine logging onto your favorite social media platform, 
+- *Evidence*: The speech starts with a vivid scenario—"Imagine logging onto your favorite social media platform, 
 only to be greeted by a flood of hateful messages." This effectively engages the audience by creating an emotional and relatable opening.*
 
 ## Transcript to evaluate

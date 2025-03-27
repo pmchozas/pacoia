@@ -3,7 +3,7 @@ Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Aca
 
 ## Requirements
 - [Python3](https://www.python.org/)
-- [Viertualenv installed](https://virtualenv.pypa.io/en/latest/)
+- [Virtualenv installed](https://virtualenv.pypa.io/en/latest/)
   
 ## Installation
 ```bash
