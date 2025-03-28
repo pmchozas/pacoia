@@ -2,7 +2,7 @@
 Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico
 
 ## Requirements
-- [Python3](https://www.python.org/)
+- [Python 3.13.1](https://www.python.org/)
 - [Virtualenv installed](https://virtualenv.pypa.io/en/latest/)
   
 ## Installation
@@ -16,3 +16,5 @@ pip install -r requirements.txt
 ```bash
 python3 main.py
 ```
+
+Then the application will be deployed in `http://127.0.0.1:7860`
