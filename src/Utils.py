@@ -1,3 +1,4 @@
+from typing import Optional
 from dotenv import load_dotenv
 from huggingface_hub import login
 import os
@@ -14,9 +15,9 @@ class Utils:
 
     @staticmethod
     def default_config() -> list:
-        model_id: str = None
-        device: str = None
-        torch_dtype: torch.dtype = None
+        model_id: Optional[str] = None
+        device: Optional[str] = None
+        torch_dtype: Optional[torch.dtype] = None
 
         if torch.cuda.is_available():
             device = "cuda:0"
