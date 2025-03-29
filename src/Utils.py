@@ -11,6 +11,7 @@ class Utils:
         HF_TOKEN = os.getenv("HF_TOKEN")
         login(token=HF_TOKEN)
 
+
     @staticmethod
     def default_config() -> list:
         model_id: str = None

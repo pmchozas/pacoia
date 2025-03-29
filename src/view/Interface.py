@@ -23,15 +23,15 @@ class Interface:
             with gr.Row():
                 llm_feedback = gr.Textbox(label="LLM feedback")
 
-        submit_btn.click(
-            fn=function_ptr,
-            inputs=audio_box,
-            outputs=[
-            transcription,
-            rms_plot,
-            snr_plot,
-            rms_feedback,
-            snr_feedback,
-            llm_feedback
-            ]
-        )
+            submit_btn.click(
+                fn=function_ptr,
+                inputs=audio_box,
+                outputs=[
+                    transcription,
+                    rms_plot,
+                    snr_plot,
+                    rms_feedback,
+                    snr_feedback,
+                    llm_feedback
+                ]
+            )

@@ -1,14 +1,15 @@
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import torch
+import logging
 
 class WhisperManager:
 
-    def __init__(self, model_id, torch_dtype, device):
+    def __init__(self, model_id: str, torch_dtype: torch.dtype, device: str):
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
-        model_id, 
-        torch_dtype=torch_dtype, 
-        low_cpu_mem_usage=True, 
-        use_safetensors=True,
+            model_id, 
+            torch_dtype=torch_dtype, 
+            low_cpu_mem_usage=True, 
+            use_safetensors=True,
         )
 
         model.to(device)
@@ -16,13 +17,13 @@ class WhisperManager:
         processor = AutoProcessor.from_pretrained(model_id)
 
         self.pipeline = pipeline(
-        "automatic-speech-recognition",
-        model=model,
-        tokenizer=processor.tokenizer,
-        feature_extractor=processor.feature_extractor,
-        torch_dtype=torch_dtype,
-        device=device,
-        return_timestamps=True,
+            "automatic-speech-recognition",
+            model=model,
+            tokenizer=processor.tokenizer,
+            feature_extractor=processor.feature_extractor,
+            torch_dtype=torch_dtype,
+            device=device,
+            return_timestamps=True,
         )
     
 
