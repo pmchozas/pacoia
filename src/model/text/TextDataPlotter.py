@@ -1,6 +1,6 @@
 
 class TextDataPlotter:
 
-  @staticmethod
-  def get_frequencies_plot():
-    pass
+    @staticmethod
+    def get_frequencies_plot():
+        pass
