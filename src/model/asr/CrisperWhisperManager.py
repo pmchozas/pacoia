@@ -1,10 +1,10 @@
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import torch
 
-class WhisperManager:
+class CrisperWhisperManager:
 
     def __init__(self, torch_dtype: torch.dtype, device: str) -> None:
-        self.model_id = "openai/whisper-small"
+        self.model_id = "nyrahealth/CrisperWhisper"
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
             self.model_id, 
             torch_dtype=torch_dtype, 
@@ -23,7 +23,7 @@ class WhisperManager:
             feature_extractor=processor.feature_extractor,
             torch_dtype=torch_dtype,
             device=device,
-            return_timestamps=True,
+            return_timestamps="word"
         )
     
 

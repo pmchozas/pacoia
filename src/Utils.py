@@ -22,10 +22,8 @@ class Utils:
         if torch.cuda.is_available():
             device = "cuda:0"
             torch_dtype = torch.float16
-            model_id = "nyrahealth/CrisperWhisper"
         else:
             device = "cpu"
             torch_dtype = torch.float32
-            model_id = "openai/whisper-small"
 
-        return [model_id, device, torch_dtype]
+        return [device, torch_dtype]
