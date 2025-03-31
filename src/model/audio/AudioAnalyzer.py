@@ -4,7 +4,7 @@ import numpy as np
 class AudioAnalyzer:
   
     @staticmethod
-    def get_rms(audio_path: str) -> float:
+    def get_rms(audio_path: str) -> np.ndarray:
         y, _ = librosa.load(audio_path)
         return librosa.feature.rms(y=y)[0]
     
@@ -19,5 +19,5 @@ class AudioAnalyzer:
 
 
     @staticmethod
-    def get_speaking_rate():
+    def get_speaking_rate() -> None:
         pass

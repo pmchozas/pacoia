@@ -35,5 +35,5 @@ class AudioDataPlotter:
 
 
     @staticmethod
-    def get_speaking_rate_plot():
+    def get_speaking_rate_plot() -> None:
         pass

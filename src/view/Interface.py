@@ -1,8 +1,10 @@
+import typing
 import gradio as gr
+from matplotlib import pyplot as plt
 
 class Interface:
 
-    def __init__(self, function_ptr):
+    def __init__(self, function_ptr: typing.Callable[[str], list[typing.Union[str, plt.Figure]]]) -> None:
         title="Speech to Text App"
         css="footer{display:none !important}"
 

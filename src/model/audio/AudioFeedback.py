@@ -49,5 +49,5 @@ class AudioFeedback:
 
 
     @staticmethod
-    def get_speaking_rate_feedback():
+    def get_speaking_rate_feedback() -> None:
         pass

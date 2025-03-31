@@ -4,7 +4,7 @@ import logging
 
 class WhisperManager:
 
-    def __init__(self, model_id: str, torch_dtype: torch.dtype, device: str):
+    def __init__(self, model_id: str, torch_dtype: torch.dtype, device: str) -> None:
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
             model_id, 
             torch_dtype=torch_dtype, 
@@ -27,5 +27,5 @@ class WhisperManager:
         )
     
 
-    def transcribe(self, audio_path: str) -> str:
+    def transcribe(self, audio_path: str) -> dict:
         return self.pipeline(audio_path)
