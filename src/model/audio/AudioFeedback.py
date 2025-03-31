@@ -49,5 +49,30 @@ class AudioFeedback:
 
 
     @staticmethod
-    def get_speaking_rate_feedback() -> None:
-        pass
+    def get_speaking_rate_feedback(word_count: int, length: int) -> str:
+        mean_rate = word_count / length
+
+        if mean_rate < 70:
+            return "Your speaking rate is quite slow, which may make the speech feel " \
+                "overly drawn out. Consider increasing your pace slightly to maintain " \
+                "engagement and improve fluidity."
+
+        elif mean_rate < 110:
+            return "Your speech is on the slower side, which could be beneficial for " \
+                "clarity but might feel a bit sluggish. Consider speeding up a little to " \
+                "maintain a more natural rhythm."
+
+        elif mean_rate < 150:
+            return "Your speaking rate is within the normal range, making your speech " \
+                "clear and easy to follow. This is ideal for most conversational " \
+                "and presentation settings."
+
+        elif mean_rate < 190:
+            return "You're speaking at a fast pace. While this shows enthusiasm, " \
+                "it could make it harder for listeners to catch every word. Try slowing " \
+                "down slightly to improve clarity."
+
+        else:
+            return "Your speaking rate is very fast, which might be overwhelming for " \
+                "some listeners. Consider pausing occasionally to allow your audience to " \
+                "absorb the information."

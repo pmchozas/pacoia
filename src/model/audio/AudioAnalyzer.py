@@ -19,5 +19,10 @@ class AudioAnalyzer:
 
 
     @staticmethod
-    def get_speaking_rate() -> None:
-        pass
+    def get_speaking_rate(chunks: list, length: int, interval : int = 5) -> dict:
+        rates = dict()
+
+        for i in range(0, round(length), interval):
+            rates[i] = (sum([c["timestamp"][1] > i and c["timestamp"][1] < i + interval for c in chunks]) / interval) * 60
+
+        return dict(sorted(rates.items(), key=lambda item: item[0]))

@@ -35,5 +35,15 @@ class AudioDataPlotter:
 
 
     @staticmethod
-    def get_speaking_rate_plot() -> None:
-        pass
+    def get_speaking_rate_plot(rates: dict, interval: int = 1) -> plt.Figure:
+        fig, ax = plt.subplots()
+
+        ax.plot(list(rates.keys()),list(rates.values()))
+
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Words per minute")
+        ax.set_title("Speaking rate")
+
+        ax.set_xticks(np.arange(0, max(rates.keys()) + 1, interval))
+
+        return fig
