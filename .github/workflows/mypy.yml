@@ -25,4 +25,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run mypy
-      run: mypy --follow-untyped-imports --explicit-package-bases src
+      run: mypy --explicit-package-bases src
