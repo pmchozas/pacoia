@@ -1,28 +1,23 @@
 import librosa
 import numpy as np
 
-class AudioAnalyzer:
-  
-    @staticmethod
-    def get_rms(audio_path: str) -> np.ndarray:
-        y, _ = librosa.load(audio_path)
-        return librosa.feature.rms(y=y)[0]
-    
-
-    @staticmethod
-    def get_snr(rms: np.ndarray) -> float:
-        noise_threshold = np.percentile(rms, 10)
-        speech_energy = np.mean(rms[rms > noise_threshold])
-        noise_energy = np.mean(rms[rms <= noise_threshold])
-
-        return 10 * np.log10(speech_energy / noise_energy)
+def get_rms(audio_path: str) -> np.ndarray:
+    y, _ = librosa.load(audio_path)
+    return librosa.feature.rms(y=y)[0]
 
 
-    @staticmethod
-    def get_speaking_rate(chunks: list, length: int, interval : int = 5) -> dict:
-        rates = dict()
+def get_snr(rms: np.ndarray) -> float:
+    noise_threshold = np.percentile(rms, 10)
+    speech_energy = np.mean(rms[rms > noise_threshold])
+    noise_energy = np.mean(rms[rms <= noise_threshold])
 
-        for i in range(0, round(length), interval):
-            rates[i] = (sum([c["timestamp"][1] > i and c["timestamp"][1] < i + interval for c in chunks]) / interval) * 60
+    return 10 * np.log10(speech_energy / noise_energy)
 
-        return dict(sorted(rates.items(), key=lambda item: item[0]))
+
+def get_speaking_rate(chunks: list, length: int, interval : int = 5) -> dict:
+    rates = dict()
+
+    for i in range(0, round(length), interval):
+        rates[i] = (sum([c["timestamp"][1] > i and c["timestamp"][1] < i + interval for c in chunks]) / interval) * 60
+
+    return dict(sorted(rates.items(), key=lambda item: item[0]))
