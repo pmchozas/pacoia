@@ -1,24 +1,25 @@
 from typing import Union
-from model.asr.CrisperWhisperManager import CrisperWhisperManager
-from model.audio.AudioAnalyzer import AudioAnalyzer
-from model.audio.AudioDataPlotter import AudioDataPlotter
-from model.audio.AudioFeedback import AudioFeedback
-from model.asr.WhisperManager import WhisperManager 
-from Utils import Utils
+from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
+import src.model.audio.AudioAnalyzer as AudioAnalyzer
+import src.model.audio.AudioDataPlotter as AudioDataPlotter
+import src.model.audio.AudioFeedback as AudioFeedback
+from src.model.asr.WhisperManager import WhisperManager 
+import Utils
 import matplotlib.pyplot as plt
-
-from model.text.TextAnalyzer import TextAnalyzer
-from model.text.TextDataPlotter import TextDataPlotter
-from model.text.TextFeedback import TextFeedback
+import src.model.text.TextAnalyzer as TextAnalyzer
+import src.model.text.TextDataPlotter as TextDataPlotter
+import src.model.text.TextFeedback as TextFeedback
 
 class Controller:
-  
-    def __init__(self) -> None:
+    def __init__(self, model: str) -> None:
         Utils.login_hf()
         device, torch_dtype = Utils.default_config()
 
-        self.asr_manager = WhisperManager(torch_dtype, device)
-        # self.asr_manager = CrisperWhisperManager(torch_dtype, device)
+        if model == "CrisperWhisper":
+            self.asr_manager: Union[WhisperManager,CrisperWhisperManager] = \
+                CrisperWhisperManager(torch_dtype, device)
+        else:
+            self.asr_manager = WhisperManager(torch_dtype, device)
 
 
     def generate_outputs_whisper(self, audio_path: str) -> list[Union[str, plt.Figure]]:
