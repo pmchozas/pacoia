@@ -2,11 +2,7 @@ name: TypeChecking
 
 on:
   push:
-    paths:
-      - "**.py"
   pull_request:
-    paths:
-      - "**.py"
 
 jobs:
   build:
