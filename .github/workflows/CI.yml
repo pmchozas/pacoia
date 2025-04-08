@@ -10,4 +10,4 @@ jobs:
     uses: ./.github/workflows/Tests.yml
   type-checking:
     needs: build
-    uses: ./.github/workflows/TypeCheking.yml
+    uses: ./.github/workflows/TypeChecking.yml
