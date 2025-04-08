@@ -14,6 +14,7 @@ class Controller:
     def __init__(self, model: str) -> None:
         Utils.login_hf()
         device, torch_dtype = Utils.default_config()
+        self.model = model
 
         if model == "CrisperWhisper":
             self.asr_manager: Union[WhisperManager,CrisperWhisperManager] = \
@@ -27,15 +28,24 @@ class Controller:
         word_frequencies = TextAnalyzer.get_word_frequencies(speech_data["text"])
         rms = AudioAnalyzer.get_rms(audio_path)
         mean_snr = AudioAnalyzer.get_snr(rms)
+        word_count = len(word_frequencies)
+        length = speech_data["chunks"][len(speech_data["chunks"])-1]["timestamp"][1]
+        rates = AudioAnalyzer.get_speaking_rate(self.model, speech_data["chunks"], length)
 
         output = list()
         output.append(speech_data["text"])
         output.append(TextDataPlotter.get_frequencies_plot(word_frequencies))
-        output.append(AudioDataPlotter.get_rms_plot(rms))
-        output.append(AudioDataPlotter.get_rms_plot(rms))
         output.append(TextFeedback.get_frequencies_feedback(word_frequencies))
+
+        output.append(AudioDataPlotter.get_speaking_rate_plot(rates, length))
+        output.append(AudioFeedback.get_speaking_rate_feedback(word_count, length))
+
+        output.append(AudioDataPlotter.get_rms_plot(rms))
         output.append(AudioFeedback.get_rms_feedback(rms))
+
+        output.append(AudioDataPlotter.get_snr_plot(rms))
         output.append(AudioFeedback.get_snr_feedback(mean_snr))
+
 
         output.append("Here will go LLM feedback")
 
@@ -48,20 +58,21 @@ class Controller:
         rms = AudioAnalyzer.get_rms(audio_path)
         mean_snr = AudioAnalyzer.get_snr(rms)
         word_count = len(word_frequencies)
-        length = speech_data["chunks"][len(speech_data["chunks"]-1)]["timestamps"][1]
+        length = speech_data["chunks"][len(speech_data["chunks"])-1]["timestamp"][1]
+        rates = AudioAnalyzer.get_speaking_rate(self.model, speech_data["chunks"], length)
 
         output = list()
         output.append(speech_data["text"])
         output.append(TextDataPlotter.get_frequencies_plot(word_frequencies))
         output.append(TextFeedback.get_frequencies_feedback(word_frequencies))
 
-        output.append(AudioDataPlotter.get_speaking_rate_plot(speech_data["chunks"], length))
+        output.append(AudioDataPlotter.get_speaking_rate_plot(rates, length))
         output.append(AudioFeedback.get_speaking_rate_feedback(word_count, length))
 
         output.append(AudioDataPlotter.get_rms_plot(rms))
         output.append(AudioFeedback.get_rms_feedback(rms))
 
-        output.append(AudioDataPlotter.get_rms_plot(rms))
+        output.append(AudioDataPlotter.get_snr_plot(rms))
         output.append(AudioFeedback.get_snr_feedback(mean_snr))
 
         output.append("Here will go LLM feedback")

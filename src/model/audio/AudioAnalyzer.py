@@ -14,10 +14,18 @@ def get_snr(rms: np.ndarray) -> float:
     return 10 * np.log10(speech_energy / noise_energy)
 
 
-def get_speaking_rate(chunks: list, length: int, interval : int = 5) -> dict:
+def get_speaking_rate(model: str, chunks: list, length: int, interval : int = 5) -> dict:
     rates = dict()
 
-    for i in range(0, round(length), interval):
-        rates[i] = (sum([c["timestamp"][1] > i and c["timestamp"][1] < i + interval for c in chunks]) / interval) * 60
+    if model == "CrisperWhisper":
+        for i in range(0, round(length), interval):
+            rates[i] = (sum([c["timestamp"][1] > i and c["timestamp"][1] < i + interval for c in chunks]) / interval) * 60
 
-    return dict(sorted(rates.items(), key=lambda item: item[0]))
+        return dict(sorted(rates.items(), key=lambda item: item[0]))
+    else:
+        for i in range(len(chunks)):
+            c = chunks[i]
+            inter = c["timestamp"][1] - c["timestamp"][0]
+            rates[i] = (len(c["text"].split(" ")) / inter) * 60
+
+        return dict(sorted(rates.items(), key=lambda item: item[0]))

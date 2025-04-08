@@ -1,6 +1,5 @@
 import sys
-from view.CrisperWhisperInterface import CrisperWhisperInterface
-from view.WhisperInterface import WhisperInterface
+from view.Interface import Interface
 from controller.Controller import Controller
 import logging.config
 import argparse
@@ -18,9 +17,9 @@ def main() -> None:
     controller = Controller(model)
 
     if model == "CrisperWhisper":
-        CrisperWhisperInterface(controller.generate_outputs_crisper_whisper).blocks.launch(debug=True)
+        Interface(controller.generate_outputs_crisper_whisper).blocks.launch(debug=True)
     elif model == "Whisper":
-        WhisperInterface(controller.generate_outputs_whisper).blocks.launch(debug=True)
+        Interface(controller.generate_outputs_whisper).blocks.launch(debug=True)
     else:
         print(f"Model '{model}' is not currently supported", file=sys.stderr)
         sys.exit(1)
