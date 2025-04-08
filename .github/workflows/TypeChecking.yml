@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -16,7 +16,7 @@ jobs:
         python-version: 3.13.1
 
     - name: Download venv artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: python-venv
 

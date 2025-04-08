@@ -1,7 +1,7 @@
 name: Build
 on:
   workflow_call:
-     
+
 jobs:
   build-deps:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
   
       - name: Upload artifact
         if: steps.cache-venv.outputs.cache-hit != 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: python-venv
           path: venv.tar.gz
