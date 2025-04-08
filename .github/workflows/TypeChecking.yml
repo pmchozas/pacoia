@@ -1,8 +1,7 @@
 name: TypeChecking
 
 on:
-  push:
-  pull_request:
+  workflow_call:
 
 jobs:
   build:
@@ -15,10 +14,17 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.13.1
-        cache: 'pip'
-    - run: |
-        pip install mypy
-        pip install -r requirements.txt
+
+    - name: Download venv artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: python-venv
+
+    - name: Extract and activate venv
+      shell: bash
+      run: |
+        tar -xzf venv.tar.gz
+        source venv/bin/activate
 
     - name: Run mypy
-      run: mypy --explicit-package-bases src
+      run: ./venv/bin/mypy --explicit-package-bases src

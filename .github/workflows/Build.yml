@@ -1,0 +1,49 @@
+name: Build
+on:
+  workflow_call:
+     
+jobs:
+  build-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13.1
+
+      - name: Cache pip downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-cache-${{ hashFiles('requirements.txt') }}
+
+      - name: Cache virtualenv
+        id: cache-venv
+        uses: actions/cache@v4
+        with:
+          path: venv
+          key: venv-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            venv-
+
+      - name: Install dependencies into ./venv
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          pip install pytest
+          pip install mypy
+
+      - name: Archive and upload venv if not cached
+        if: steps.cache-venv.outputs.cache-hit != 'true'
+        run: tar -czf venv.tar.gz venv/
+  
+      - name: Upload artifact
+        if: steps.cache-venv.outputs.cache-hit != 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-venv
+          path: venv.tar.gz
