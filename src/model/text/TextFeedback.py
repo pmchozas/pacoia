@@ -1,51 +1,58 @@
-import math
+from math import sqrt
+import src.model.text.TextMessages as TextMessages
 
 def get_frequencies_feedback(word_frequencies: dict[str, int]) -> str:
     unique_words = len(word_frequencies.keys())
     total_words = sum(word_frequencies.values())
 
-    type_toke_ratio = unique_words / total_words
-    measure_of_textual_lexical_richness = unique_words / math.sqrt(total_words)
+    type_token_ratio = unique_words / total_words
+    measure_of_textual_lexical_richness = unique_words / sqrt(total_words)
 
-    feedback = f"TTR: {type_toke_ratio:.2f}\n"
-
-    if type_toke_ratio < 0.2:
-        feedback += "Your speech is highly repetitive. Increase word variety " \
-            "for better engagement and depth."
-
-    elif type_toke_ratio < 0.4:
-        feedback += "Vocabulary is somewhat repetitive. Consider expanding your " \
-            "word choices to avoid redundancy."
-
-    elif type_toke_ratio < 0.6:
-        feedback += "Reasonable lexical diversity. Add more variety to improve " \
-            "clarity and richness."
-
-    elif type_toke_ratio < 0.8:
-        feedback += "Excellent variety in word choice. This is ideal for more " \
-            "formal or academic contexts."
-    else:
-        feedback += "Great diversity! Ensure balance between complexity and clarity."
+    feedback = f"TTR: {type_token_ratio:.2f}\n"
+    feedback += _get_type_token_ratio_feedback(type_token_ratio)
 
     feedback += f"\n\nMTLR: {measure_of_textual_lexical_richness:.2f}\n"
+    feedback += _get_lexical_richness_feedback(measure_of_textual_lexical_richness)
+
+    return feedback
+
+
+def _get_type_token_ratio_feedback(type_token_ratio: float) -> str:
+    feedback = str()
+
+    if type_token_ratio < 0.2:
+        feedback = TextMessages.very_low_type_token_ratio
+
+    elif type_token_ratio < 0.4:
+        feedback = TextMessages.low_type_token_ratio
+
+    elif type_token_ratio < 0.6:
+        feedback = TextMessages.normal_type_token_ratio
+
+    elif type_token_ratio < 0.8:
+        feedback = TextMessages.high_type_token_ratio
+    
+    else:
+        feedback = TextMessages.very_high_type_token_ratio
+    
+    return feedback
+
+
+def _get_lexical_richness_feedback(measure_of_textual_lexical_richness: float) -> str:
+    feedback = str()
 
     if measure_of_textual_lexical_richness < 0.5:
-        feedback += "Limited lexical richness. Introduce more varied vocabulary " \
-            "to avoid redundancy."
+        feedback = TextMessages.very_low_lexical_richness
 
     elif measure_of_textual_lexical_richness < 1:
-        feedback += "Room for improvement in lexical richness. Use more diverse " \
-            "words to enhance engagement."
+        feedback = TextMessages.low_lexical_richness
 
     elif measure_of_textual_lexical_richness < 1.5:
-        feedback += "Moderate lexical richness. More variety can be added to make " \
-        "the speech more engaging."
+        feedback = TextMessages.normal_lexical_richness
 
     elif measure_of_textual_lexical_richness < 2:
-        feedback += "Solid lexical richness. Your vocabulary range is impressive " \
-            "and engaging."
+        feedback = TextMessages.high_lexical_richness
     else:
-        feedback += "Highly lexically rich. Be mindful of clarity and balance " \
-            "richness with simplicity."
-
+        feedback = TextMessages.very_high_type_token_ratio
+    
     return feedback

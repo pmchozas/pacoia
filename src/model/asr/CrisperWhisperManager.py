@@ -9,20 +9,26 @@ class CrisperWhisperManager:
             torch_dtype=torch_dtype, 
             low_cpu_mem_usage=True, 
             use_safetensors=True,
+            use_cache=False
         )
 
         model.to(device)
         model = torch.compile(model)
         processor = AutoProcessor.from_pretrained(self.model_id)
+        forced_language = ("<|en|>")
+        generate_kwargs = {"language": forced_language}
 
         self.pipeline = pipeline(
             "automatic-speech-recognition",
             model=model,
             tokenizer=processor.tokenizer,
             feature_extractor=processor.feature_extractor,
+            chunk_length_s=90,
+            batch_size=1,
             torch_dtype=torch_dtype,
             device=device,
-            return_timestamps="word"
+            return_timestamps="word",
+            generate_kwargs=generate_kwargs
         )
     
 

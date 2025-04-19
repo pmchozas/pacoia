@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-import numpy as np
+from numpy import arange
 
 def get_frequencies_plot(word_frequencies: dict[str, int]) -> plt.Figure:
     categories: list[str] = list(word_frequencies.keys())
@@ -16,7 +16,7 @@ def get_frequencies_plot(word_frequencies: dict[str, int]) -> plt.Figure:
         ax.set_title("Word Frequencies")
 
         ax.set_xticks([])
-        ax.set_yticks(np.arange(0, max(values) + 1, 1))
+        ax.set_yticks(arange(0, max(values) + 1, 1))
         ax.set_ylim(0, max(values) * 1.2)
 
     return fig

@@ -14,6 +14,8 @@ class WhisperManager:
         model.to(device)
         model = torch.compile(model)
         processor = AutoProcessor.from_pretrained(self.model_id)
+        forced_language = ("<|en|>")
+        generate_kwargs = {"language": forced_language}
 
         self.pipeline = pipeline(
             "automatic-speech-recognition",
@@ -23,6 +25,7 @@ class WhisperManager:
             torch_dtype=torch_dtype,
             device=device,
             return_timestamps=True,
+            generate_kwargs=generate_kwargs
         )
     
 

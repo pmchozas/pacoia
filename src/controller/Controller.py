@@ -4,7 +4,7 @@ import src.model.audio.AudioAnalyzer as AudioAnalyzer
 import src.model.audio.AudioDataPlotter as AudioDataPlotter
 import src.model.audio.AudioFeedback as AudioFeedback
 from src.model.asr.WhisperManager import WhisperManager 
-import Utils
+import src.Utils as Utils
 import matplotlib.pyplot as plt
 import src.model.text.TextAnalyzer as TextAnalyzer
 import src.model.text.TextDataPlotter as TextDataPlotter

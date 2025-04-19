@@ -1,7 +1,6 @@
 import librosa
 import src.model.audio.AudioDataPlotter as AudioDataPlotter
 import src.model.audio.AudioAnalyzer as AudioAnalyzer
-import numpy as np
 import matplotlib.pyplot as plt
 
 class TestAudioDataPlotter:
@@ -20,5 +19,5 @@ class TestAudioDataPlotter:
         plt.close(plot)
 
     def test_get_speaking_rate_plot(self):
-        speaking_rate = AudioAnalyzer.get_speaking_rate("Whisper", [{"text": "texto", "timestamp": (0, 1)}], 1)
+        speaking_rate = AudioAnalyzer.get_speaking_rate("Whisper", [{"text": "text", "timestamp": (0, 1)}], 1)
         assert type(AudioDataPlotter.get_speaking_rate_plot(speaking_rate)) == plt.Figure

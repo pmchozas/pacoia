@@ -1,6 +1,6 @@
 import sys
-from view.Interface import Interface
-from controller.Controller import Controller
+from src.view.Interface import Interface
+from src.controller.Controller import Controller
 import logging.config
 import argparse
 
