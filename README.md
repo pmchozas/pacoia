@@ -1,12 +1,10 @@
 # PACOIA project
-![StaticCheck](https://github.com/pmchozas/pacoia/actions/workflows/TypeChecking.yml/badge.svg)
-![Tests](https://github.com/pmchozas/pacoia/actions/workflows/Tests.yml/badge.svg)
+![CI](https://github.com/pmchozas/pacoia/actions/workflows/CI.yml/badge.svg)
 
 Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico
 
 ## Requirements
-- [Python 3.13.1](https://www.python.org/)
-- [Virtualenv installed](https://virtualenv.pypa.io/en/latest/)
+- [Python 3.12](https://www.python.org/)
   
 ## Installation
 
@@ -19,9 +17,12 @@ pip install -r requirements.txt
 
 ## Usage
 ```bash
-python3 main.py --model <asr_model_name>
+python3 -m src.main --model <asr_model_name>
 ```
+
+Currently the only supported ASR models are `CrisperWhisper` and `Whisper`
+
 > [!NOTE]  
-> Currently the only supported ASR models are `CrisperWhisper` and `Whisper`
+> In order to use CrisperWhisper you must generate a token [here](https://huggingface.co/nyrahealth/CrisperWhisper) and assign it to the environmental variable `HF_TOKEN`, where the token will be read by the application
 
 Then the application will be deployed in `http://127.0.0.1:7860`
