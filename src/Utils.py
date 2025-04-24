@@ -1,8 +1,9 @@
-from typing import Optional, Union
+from os import getenv
+
 from dotenv import load_dotenv
 from huggingface_hub import login
-from os import getenv
-from torch import dtype, torch, cuda
+from torch import cuda, dtype, torch
+
 
 def login_hf() -> None:
     load_dotenv()
@@ -10,15 +11,9 @@ def login_hf() -> None:
     login(token=HF_TOKEN)
 
 
-def default_config() -> list[Union[str, dtype]]:
-    device: Optional[str] = None
-    torch_dtype: Optional[dtype] = None
+def default_device() -> str:
+    return "cuda:0" if cuda.is_available() else "cpu"
 
-    if cuda.is_available():
-        device = "cuda:0"
-        torch_dtype = torch.float16
-    else:
-        device = "cpu"
-        torch_dtype = torch.float16
 
-    return [device, torch_dtype]
+def default_dtype() -> dtype:
+    return torch.float16
