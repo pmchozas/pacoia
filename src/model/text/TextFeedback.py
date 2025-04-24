@@ -1,5 +1,7 @@
 from math import sqrt
-import src.model.text.TextMessages as TextMessages
+
+from src.model.text import TextMessages
+
 
 def get_frequencies_feedback(word_frequencies: dict[str, int]) -> str:
     unique_words = len(word_frequencies.keys())
@@ -18,7 +20,7 @@ def get_frequencies_feedback(word_frequencies: dict[str, int]) -> str:
 
 
 def _get_type_token_ratio_feedback(type_token_ratio: float) -> str:
-    feedback = str()
+    feedback = ""
 
     if type_token_ratio < 0.2:
         feedback = TextMessages.very_low_type_token_ratio
@@ -31,15 +33,15 @@ def _get_type_token_ratio_feedback(type_token_ratio: float) -> str:
 
     elif type_token_ratio < 0.8:
         feedback = TextMessages.high_type_token_ratio
-    
+
     else:
         feedback = TextMessages.very_high_type_token_ratio
-    
+
     return feedback
 
 
 def _get_lexical_richness_feedback(measure_of_textual_lexical_richness: float) -> str:
-    feedback = str()
+    feedback = ""
 
     if measure_of_textual_lexical_richness < 0.5:
         feedback = TextMessages.very_low_lexical_richness
@@ -54,5 +56,5 @@ def _get_lexical_richness_feedback(measure_of_textual_lexical_richness: float) -
         feedback = TextMessages.high_lexical_richness
     else:
         feedback = TextMessages.very_high_type_token_ratio
-    
+
     return feedback

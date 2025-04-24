@@ -1,15 +1,16 @@
 from matplotlib import pyplot as plt
 from numpy import arange
 
+
 def get_frequencies_plot(word_frequencies: dict[str, int]) -> plt.Figure:
     categories: list[str] = list(word_frequencies.keys())
     values: list[int] = list(word_frequencies.values())
 
     fig, ax = plt.subplots()
-    ax.bar(categories, values, color='red')
+    ax.bar(categories, values, color="red")
 
     for i, c in enumerate(categories):
-        ax.text(i - 0.05, word_frequencies[c] + 0.05, c, ha='center', fontsize=10, rotation=75)
+        ax.text(i - 0.05, word_frequencies[c] + 0.05, c, ha="center", fontsize=10, rotation=75)
 
         ax.set_xlabel("Words")
         ax.set_ylabel("Appearances")

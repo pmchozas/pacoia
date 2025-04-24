@@ -1,14 +1,16 @@
-import sys
-from src.view.Interface import Interface
-from src.controller.Controller import Controller
-import logging.config
 import argparse
+import logging.config
+import sys
 
-def main() -> None: 
+from src.controller.Controller import Controller
+from src.view.Interface import Interface
+
+
+def main() -> None:
     logging.config.fileConfig("config/logging.conf")
-    
+
     parser = argparse.ArgumentParser(
-        description="PACOIA project"
+        description="PACOIA project",
     )
     parser.add_argument("--model", required=True, type=str)
 
@@ -23,6 +25,7 @@ def main() -> None:
     else:
         print(f"Model '{model}' is not currently supported", file=sys.stderr)
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

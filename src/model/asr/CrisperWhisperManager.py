@@ -1,15 +1,16 @@
-from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import torch
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
+
 
 class CrisperWhisperManager:
     def __init__(self, torch_dtype: torch.dtype, device: str) -> None:
         self.model_id = "nyrahealth/CrisperWhisper"
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            self.model_id, 
-            torch_dtype=torch_dtype, 
-            low_cpu_mem_usage=True, 
+            self.model_id,
+            torch_dtype=torch_dtype,
+            low_cpu_mem_usage=True,
             use_safetensors=True,
-            use_cache=False
+            use_cache=False,
         )
 
         model.to(device)
@@ -28,9 +29,8 @@ class CrisperWhisperManager:
             torch_dtype=torch_dtype,
             device=device,
             return_timestamps="word",
-            generate_kwargs=generate_kwargs
+            generate_kwargs=generate_kwargs,
         )
-    
 
     def transcribe(self, audio_path: str) -> dict:
         return self.pipeline(audio_path)

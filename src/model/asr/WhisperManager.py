@@ -1,13 +1,14 @@
-from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import torch
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
+
 
 class WhisperManager:
     def __init__(self, torch_dtype: torch.dtype, device: str) -> None:
         self.model_id = "openai/whisper-small"
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            self.model_id, 
-            torch_dtype=torch_dtype, 
-            low_cpu_mem_usage=True, 
+            self.model_id,
+            torch_dtype=torch_dtype,
+            low_cpu_mem_usage=True,
             use_safetensors=True,
         )
 
@@ -25,9 +26,8 @@ class WhisperManager:
             torch_dtype=torch_dtype,
             device=device,
             return_timestamps=True,
-            generate_kwargs=generate_kwargs
+            generate_kwargs=generate_kwargs,
         )
-    
 
     def transcribe(self, audio_path: str) -> dict:
         return self.pipeline(audio_path)

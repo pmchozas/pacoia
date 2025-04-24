@@ -1,11 +1,13 @@
 import typing
+
 import gradio as gr
 from matplotlib import pyplot as plt
 
+
 class Interface:
     def __init__(self, function_ptr: typing.Callable[[str], list[typing.Union[str, plt.Figure]]]) -> None:
-        title="Speech to Text App"
-        css="footer{display:none !important}"
+        title = "Speech to Text App"
+        css = "footer{display:none !important}"
 
         with gr.Blocks(title=title, css=css) as self.blocks:
             with gr.Row():
@@ -37,7 +39,7 @@ class Interface:
                 snr_feedback = gr.Textbox(label="SNR feedback")
 
             with gr.Row():
-                llm_feedback = gr.Textbox(label="LLM feedback")
+                llm_feedback = gr.Markdown(label="LLM feedback")
 
             submit_btn.click(
                 fn=function_ptr,
@@ -52,6 +54,6 @@ class Interface:
                     rms_feedback,
                     snr_plot,
                     snr_feedback,
-                    llm_feedback
-                ]
+                    llm_feedback,
+                ],
             )

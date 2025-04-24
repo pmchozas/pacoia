@@ -1,7 +1,10 @@
-from collections import Counter
-import textstat
 import re
-import src.model.text.TextAnalyzer as TextAnalyzer
+from collections import Counter
+
+import textstat
+
+from src.model.text import TextAnalyzer
+
 
 def get_words(text: str) -> list[str]:
     return re.findall(r"\b\w+(?:[-']\w+)*\b", text)

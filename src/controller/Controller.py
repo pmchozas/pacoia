@@ -1,27 +1,26 @@
 from typing import Union
-from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
-import src.model.audio.AudioAnalyzer as AudioAnalyzer
-import src.model.audio.AudioDataPlotter as AudioDataPlotter
-import src.model.audio.AudioFeedback as AudioFeedback
-from src.model.asr.WhisperManager import WhisperManager 
-import src.Utils as Utils
+
 import matplotlib.pyplot as plt
-import src.model.text.TextAnalyzer as TextAnalyzer
-import src.model.text.TextDataPlotter as TextDataPlotter
-import src.model.text.TextFeedback as TextFeedback
+
+from src import Utils
+from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
+from src.model.asr.WhisperManager import WhisperManager
+from src.model.audio import AudioAnalyzer, AudioDataPlotter, AudioFeedback
+from src.model.text import TextAnalyzer, TextDataPlotter, TextFeedback
+
 
 class Controller:
     def __init__(self, model: str) -> None:
         Utils.login_hf()
-        device, torch_dtype = Utils.default_config()
+        device = Utils.default_device()
+        torch_dtype = Utils.default_dtype()
         self.model = model
 
         if model == "CrisperWhisper":
-            self.asr_manager: Union[WhisperManager,CrisperWhisperManager] = \
+            self.asr_manager: Union[WhisperManager, CrisperWhisperManager] = \
                 CrisperWhisperManager(torch_dtype, device)
         else:
             self.asr_manager = WhisperManager(torch_dtype, device)
-
 
     def generate_outputs_whisper(self, audio_path: str) -> list[Union[str, plt.Figure]]:
         speech_data = self.asr_manager.transcribe(audio_path)
@@ -29,7 +28,7 @@ class Controller:
         rms = AudioAnalyzer.get_rms(audio_path)
         mean_snr = AudioAnalyzer.get_snr(rms)
         word_count = len(word_frequencies)
-        length = speech_data["chunks"][len(speech_data["chunks"])-1]["timestamp"][1]
+        length = speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"][1]
         rates = AudioAnalyzer.get_speaking_rate(self.model, speech_data["chunks"], length)
 
         output = list()
@@ -46,11 +45,9 @@ class Controller:
         output.append(AudioDataPlotter.get_snr_plot(rms))
         output.append(AudioFeedback.get_snr_feedback(mean_snr))
 
-
-        output.append("Here will go LLM feedback")
+        output.append("<span style='color:blue'>some *blue* text</span>.")
 
         return output
-    
 
     def generate_outputs_crisper_whisper(self, audio_path: str) -> list[Union[str, plt.Figure]]:
         speech_data = self.asr_manager.transcribe(audio_path)
@@ -58,7 +55,7 @@ class Controller:
         rms = AudioAnalyzer.get_rms(audio_path)
         mean_snr = AudioAnalyzer.get_snr(rms)
         word_count = len(word_frequencies)
-        length = speech_data["chunks"][len(speech_data["chunks"])-1]["timestamp"][1]
+        length = speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"][1]
         rates = AudioAnalyzer.get_speaking_rate(self.model, speech_data["chunks"], length)
 
         output = list()
