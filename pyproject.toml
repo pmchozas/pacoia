@@ -1,3 +1,26 @@
+[project]
+name = "pacoia"
+version = "0.0.1"
+description = "Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "gradio==5.26.0",
+    "librosa==0.11.0",
+    "torch==2.7.0",
+    "transformers==4.51.3",
+    "huggingface_hub==0.30.2",
+    "python-dotenv==1.1.0",
+    "accelerate==1.6.0",
+    "bitsandbytes==0.45.5",
+    "numpy==2.2.5",
+    "matplotlib==3.10.1",
+    "textstat==0.7.5"
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy"]
+
 [tool.ruff]
 target-version = "py39"
 fix = true
@@ -10,3 +33,8 @@ line-length = 120
 testpaths = ["tests"]
 pythonpath = "."
 python_files = "test_*.py"
+
+[tool.mypy]
+explicit_package_bases = true
+ignore_missing_imports = true
+extra_checks = true

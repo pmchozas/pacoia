@@ -5,19 +5,18 @@ Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Aca
 
 ## Requirements
 - [Python 3.12](https://www.python.org/)
+- [Astral uv](https://docs.astral.sh/uv/)
   
 ## Installation
 
 ### Using Virtualenv
 ```bash
-python3 -m venv <myenvpath>
-source <myenvpath>/bin/activate
-pip install -r requirements.txt
+uv sync --locked --all-extras --dev
 ```
 
 ## Usage
 ```bash
-python3 -m src.main --model <asr_model_name>
+uv run -m src.main --model Whisper
 ```
 
 Currently the only supported ASR models are `CrisperWhisper` and `Whisper`

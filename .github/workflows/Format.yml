@@ -1,4 +1,4 @@
-name: Tests
+name: TypeChecking
 
 on:
   workflow_call:
@@ -21,6 +21,6 @@ jobs:
         version: "0.6.16"
         enable-cache: true
         cache-dependency-glob: "uv.lock"
-        
-    - name: Run pytest
-      run: uvx pytest
+
+    - name: Run ruff
+      run: uvx ruff check src
