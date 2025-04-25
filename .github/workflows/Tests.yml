@@ -23,4 +23,4 @@ jobs:
         cache-dependency-glob: "uv.lock"
         
     - name: Run pytest
-      run: uvx pytest
+      run: uv run pytest
