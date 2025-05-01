@@ -2,6 +2,7 @@ from typing import Union
 
 import matplotlib.pyplot as plt
 
+from src.model.llm.LLMPeer import LLMPeer
 from src import Utils
 from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
 from src.model.asr.WhisperManager import WhisperManager
@@ -10,11 +11,12 @@ from src.model.text import TextAnalyzer, TextDataPlotter, TextFeedback
 
 
 class Controller:
-    def __init__(self, model: str) -> None:
+    def __init__(self, model: str, llm_peer: LLMPeer) -> None:
         Utils.login_hf()
         device = Utils.default_device()
         torch_dtype = Utils.default_dtype()
         self.model = model
+        self.llm_peer = llm_peer
 
         if model == "CrisperWhisper":
             self.asr_manager: Union[WhisperManager, CrisperWhisperManager] = \
@@ -45,7 +47,14 @@ class Controller:
         output.append(AudioDataPlotter.get_snr_plot(rms))
         output.append(AudioFeedback.get_snr_feedback(mean_snr))
 
-        output.append("<span style='color:blue'>some *blue* text</span>.")
+        punctuated_transcription = self.llm_peer.get_punctuated_transcription(speech_data["text"])
+        
+        output.append(self.llm_peer.get_introduction_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_background_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_innovation_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_description_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_organization_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_language_evaluation(punctuated_transcription))
 
         return output
 
@@ -72,6 +81,13 @@ class Controller:
         output.append(AudioDataPlotter.get_snr_plot(rms))
         output.append(AudioFeedback.get_snr_feedback(mean_snr))
 
-        output.append("Here will go LLM feedback")
+        punctuated_transcription = self.llm_peer.get_punctuated_transcription(speech_data["text"])
+        
+        output.append(self.llm_peer.get_introduction_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_background_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_innovation_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_description_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_organization_evaluation(punctuated_transcription))
+        output.append(self.llm_peer.get_language_evaluation(punctuated_transcription))
 
         return output

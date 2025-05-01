@@ -2,6 +2,7 @@ import argparse
 import logging.config
 import sys
 
+from src.model.llm.LLMPeer import LLMPeer
 from src.controller.Controller import Controller
 from src.view.Interface import Interface
 
@@ -16,7 +17,7 @@ def main() -> None:
 
     args = parser.parse_args()
     model = args.model
-    controller = Controller(model)
+    controller = Controller(model, LLMPeer())
 
     if model == "CrisperWhisper":
         Interface(controller.generate_outputs_crisper_whisper).blocks.launch(debug=True)

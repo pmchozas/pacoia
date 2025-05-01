@@ -39,7 +39,34 @@ class Interface:
                 snr_feedback = gr.Textbox(label="SNR feedback")
 
             with gr.Row():
-                llm_feedback = gr.Markdown(label="LLM feedback")
+                gr.Markdown("## Introduction Feedback")
+            with gr.Row():
+                introduction_feedback = gr.Markdown(label="Introduction feedback")
+
+            with gr.Row():
+                gr.Markdown("## Background Feedback")
+            with gr.Row():
+                background_feedback = gr.Markdown(label="Background feedback")
+
+            with gr.Row():
+                gr.Markdown("## Innovation Feedback")
+            with gr.Row():
+                innovation_feedback = gr.Markdown(label="Innovation feedback")
+
+            with gr.Row():
+                gr.Markdown("## Description Feedback")
+            with gr.Row():
+                description_feedback = gr.Markdown(label="Description feedback")
+
+            with gr.Row():
+                gr.Markdown("## Organization Feedback")
+            with gr.Row():
+                organization_feedback = gr.Markdown(label="Organization feedback")
+
+            with gr.Row():
+                gr.Markdown("## Language Feedback")
+            with gr.Row():
+                language_feedback = gr.Markdown(label="Language feedback")
 
             submit_btn.click(
                 fn=function_ptr,
@@ -54,6 +81,11 @@ class Interface:
                     rms_feedback,
                     snr_plot,
                     snr_feedback,
-                    llm_feedback,
-                ],
+                    introduction_feedback,
+                    background_feedback,
+                    innovation_feedback,
+                    description_feedback,
+                    organization_feedback,
+                    language_feedback,
+                ]
             )

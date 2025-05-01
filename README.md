@@ -6,6 +6,7 @@ Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Aca
 ## Requirements
 - [Python 3.12](https://www.python.org/)
 - [Astral uv](https://docs.astral.sh/uv/)
+- [FFmpeg](https://www.ffmpeg.org/)
   
 ## Installation
 
