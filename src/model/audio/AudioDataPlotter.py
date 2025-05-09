@@ -12,6 +12,8 @@ def get_rms_plot(rms: np.ndarray) -> plt.Figure:
     ax.set_ylabel("RMS Energy")
     ax.set_title("RMS Energy Over Time")
 
+    fig.set_size_inches(18, 5)
+
     return fig
 
 
@@ -28,6 +30,8 @@ def get_snr_plot(rms: np.ndarray) -> plt.Figure:
     ax.set_ylabel("SNR")
     ax.set_title("SNR Over Time")
 
+    fig.set_size_inches(18, 5)
+
     return fig
 
 
@@ -41,5 +45,7 @@ def get_speaking_rate_plot(rates: dict, interval: int = 1) -> plt.Figure:
     ax.set_title("Speaking rate")
 
     ax.set_xticks(np.arange(0, max(rates.keys()) + 1, interval))
+
+    fig.set_size_inches(18, 5)
 
     return fig

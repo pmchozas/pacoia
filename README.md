@@ -17,7 +17,7 @@ uv sync --locked --all-extras --dev
 
 ## Usage
 ```bash
-uv run -m src.main --model Whisper
+uv run -m src.main --model <model>
 ```
 
 Currently the only supported ASR models are `CrisperWhisper` and `Whisper`

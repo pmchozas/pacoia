@@ -1,5 +1,3 @@
-
-
 from matplotlib import pyplot as plt
 from numpy import arange
 
@@ -12,7 +10,7 @@ def get_frequencies_plot(word_frequencies: dict[str, int]) -> plt.Figure:
     ax.bar(categories, values, color="red")
 
     for i, c in enumerate(categories):
-        ax.text(i - 0.05, word_frequencies[c] + 0.05, c, ha="center", fontsize=10, rotation=75)
+        ax.text(i, word_frequencies[c] + 0.1, c, ha="center", fontsize=7, rotation=90)
 
         ax.set_xlabel("Words")
         ax.set_ylabel("Appearances")
@@ -22,4 +20,5 @@ def get_frequencies_plot(word_frequencies: dict[str, int]) -> plt.Figure:
         ax.set_yticks(arange(0, max(values) + 1, 1))
         ax.set_ylim(0, max(values) * 1.2)
 
+    fig.set_size_inches(18, 10)
     return fig

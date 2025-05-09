@@ -1,6 +1,6 @@
 
 prompt = \
-'''
+"""
 <|im_start|>system
 You are an evaluation assistant. Your task is to assess the **organization** of the speech or presentation transcript based on the given criteria. Follow the criteria carefully and answer with YES or NO for each. Provide brief justifications where applicable.
 <|im_end|>
@@ -62,5 +62,5 @@ Criterion 3 (Invitation to Ask Questions): YES or NO
 Notes: [Short observation or example per criterion, if applicable]
 
 <|im_end|>
-<|im_start|>  
-'''
+<|im_start|>assistant
+"""

@@ -1,6 +1,6 @@
 
 prompt = \
-'''
+"""
 <|im_start|>system
 You are an expert evaluator of presentation introductions. Your job is to assess whether the introduction meets specific rhetorical and structural criteria. Your evaluation must strictly follow the guidelines and format described below.
 <|im_end|>
@@ -19,16 +19,16 @@ Grade the **introduction** of a presentation based on the following three criter
 
 ### Valid Types of Attention-Grabbers:
 
-- ** A statistic:**  
+- ** A statistic:**
   _Example:_ “Did you know that 80% of the items we own are never used?”
 
-- ** A personal reference, story, or anecdote:**  
+- ** A personal reference, story, or anecdote:**
   _Example:_ “When I was a kid, I always wanted to have a slide.”
 
-- ** A rhetorical or open question:**  
+- ** A rhetorical or open question:**
   _Example:_ “What if we just stop wearing socks?”
 
-- ** A joke:**  
+- ** A joke:**
   _Example:_ “I was going to tell a time-traveling joke during my speech, but you didn't like it.”
 
 ---
@@ -79,4 +79,4 @@ Notes: [Brief explanation per criterion]
 
 <|im_end|>
 <|im_start|>assistant
-'''
+"""

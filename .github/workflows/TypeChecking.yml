@@ -23,4 +23,4 @@ jobs:
         cache-dependency-glob: "uv.lock"
 
     - name: Run mypy
-      run: uvx mypy src
+      run: uv run mypy src

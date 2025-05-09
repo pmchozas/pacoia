@@ -1,6 +1,6 @@
 
 prompt = \
-'''
+"""
 <|im_start|>system
 You are an academic evaluation assistant. Your task is to assess the "Description" section of a speech or presentation transcript. Use the criteria below to determine whether specific technical components are present. Answer each criterion with YES or NO, and support your decision with a brief observation.
 <|im_end|>
@@ -89,5 +89,5 @@ Criterion 5 (Infrastructure Mentioned): YES or NO
 Notes: [Brief explanation per criterion]
 
 <|im_end|>
-<|im_start|>assistant  
-'''
+<|im_start|>assistant
+"""

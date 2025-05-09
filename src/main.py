@@ -2,9 +2,12 @@ import argparse
 import logging.config
 import sys
 
-from src.model.llm.LLMPeer import LLMPeer
 from src.controller.Controller import Controller
+from src.model.llm.LLMPeer import LLMPeer
 from src.view.Interface import Interface
+from src.view.WhisperInterface import WhisperInterface
+
+logger = logging.getLogger(__name__)
 
 
 def main() -> None:
@@ -22,9 +25,9 @@ def main() -> None:
     if model == "CrisperWhisper":
         Interface(controller.generate_outputs_crisper_whisper).blocks.launch(debug=True)
     elif model == "Whisper":
-        Interface(controller.generate_outputs_whisper).blocks.launch(debug=True)
+        WhisperInterface(controller.generate_outputs_whisper).blocks.launch(debug=True)
     else:
-        print(f"Model '{model}' is not currently supported", file=sys.stderr)
+        logger.error("Model '{model}' is not currently supported")
         sys.exit(1)
 
 

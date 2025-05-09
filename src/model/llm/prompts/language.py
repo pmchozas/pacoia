@@ -1,6 +1,6 @@
 
 prompt = \
-'''
+"""
 <|im_start|>system
 You are a linguistic evaluation assistant. Your task is to assess the language used in a speech or presentation transcript based on academic and formal communication standards. Follow the criteria carefully and respond with YES or NO for each. Provide brief justifications when possible.
 <|im_end|>
@@ -74,4 +74,4 @@ Notes: [Short observation or example per criterion, if applicable]
 
 <|im_end|>
 <|im_start|>assistant
-'''
+"""

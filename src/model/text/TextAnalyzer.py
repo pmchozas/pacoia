@@ -1,5 +1,6 @@
 import re
 from collections import Counter
+from operator import itemgetter
 
 import textstat
 
@@ -12,11 +13,9 @@ def get_words(text: str) -> list[str]:
 
 def get_word_frequencies(text: str) -> dict[str, int]:
     words = TextAnalyzer.get_words(text)
-    lower_case_words = list()
-    for word in words:
-        lower_case_words.append(re.sub(r"[^\w\s']", "", word.lower()))
+    lower_case_words = [re.sub(r"[^\w\s']", "", w.lower()) for w in words]
     frequencies = Counter(lower_case_words)
-    return dict(sorted(frequencies.items(), key=lambda item: item[1], reverse=True))
+    return dict(sorted(frequencies.items(), key=itemgetter(1), reverse=True))
 
 
 def get_flesch_reading_ease(text: str) -> float:

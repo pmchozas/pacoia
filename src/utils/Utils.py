@@ -7,8 +7,7 @@ from torch import cuda, dtype, torch
 
 def login_hf() -> None:
     load_dotenv()
-    HF_TOKEN = getenv("HF_TOKEN")
-    login(token=HF_TOKEN)
+    login(token=getenv("HF_TOKEN"))
 
 
 def default_device() -> str:

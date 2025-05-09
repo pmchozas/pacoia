@@ -11,8 +11,6 @@ dependencies = [
     "transformers==4.51.3",
     "huggingface_hub==0.30.2",
     "python-dotenv==1.1.0",
-    "accelerate==1.6.0",
-    "bitsandbytes==0.45.5",
     "numpy==2.2.5",
     "matplotlib==3.10.1",
     "textstat==0.7.5"
@@ -23,6 +21,26 @@ dev = ["pytest", "ruff", "mypy"]
 
 [tool.ruff]
 target-version = "py39"
+lint.select = ["ALL"]
+lint.ignore = [
+    "D100", 
+    "CPY001", 
+    "D103", 
+    "INP001", 
+    "S105", 
+    "E501", 
+    "D107", 
+    "D102", 
+    "D101", 
+    "FA100", 
+    "TRY300", 
+    "PLR0915", 
+    "PLR0914",
+    "FURB113",
+    "D203",
+    "D212",
+    "PLR0912"
+]
 fix = true
 cache-dir = ".ruff_cache"
 include = ["*.py"]

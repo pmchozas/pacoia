@@ -1,6 +1,6 @@
 from math import sqrt
 
-from src.model.text import TextMessages
+from src.model.text import TextConstants
 
 
 def get_frequencies_feedback(word_frequencies: dict[str, int]) -> str:
@@ -22,20 +22,20 @@ def get_frequencies_feedback(word_frequencies: dict[str, int]) -> str:
 def _get_type_token_ratio_feedback(type_token_ratio: float) -> str:
     feedback = ""
 
-    if type_token_ratio < 0.2:
-        feedback = TextMessages.very_low_type_token_ratio
+    if type_token_ratio < TextConstants.very_low_type_token_ratio_value:
+        feedback = TextConstants.very_low_type_token_ratio
 
-    elif type_token_ratio < 0.4:
-        feedback = TextMessages.low_type_token_ratio
+    elif type_token_ratio < TextConstants.low_type_token_ratio_value:
+        feedback = TextConstants.low_type_token_ratio
 
-    elif type_token_ratio < 0.6:
-        feedback = TextMessages.normal_type_token_ratio
+    elif type_token_ratio < TextConstants.normal_type_token_ratio_value:
+        feedback = TextConstants.normal_type_token_ratio
 
-    elif type_token_ratio < 0.8:
-        feedback = TextMessages.high_type_token_ratio
+    elif type_token_ratio < TextConstants.high_type_token_ratio_value:
+        feedback = TextConstants.high_type_token_ratio
 
     else:
-        feedback = TextMessages.very_high_type_token_ratio
+        feedback = TextConstants.very_high_type_token_ratio
 
     return feedback
 
@@ -43,18 +43,19 @@ def _get_type_token_ratio_feedback(type_token_ratio: float) -> str:
 def _get_lexical_richness_feedback(measure_of_textual_lexical_richness: float) -> str:
     feedback = ""
 
-    if measure_of_textual_lexical_richness < 0.5:
-        feedback = TextMessages.very_low_lexical_richness
+    if measure_of_textual_lexical_richness < TextConstants.very_low_lexical_richness_value:
+        feedback = TextConstants.very_low_lexical_richness
 
-    elif measure_of_textual_lexical_richness < 1:
-        feedback = TextMessages.low_lexical_richness
+    elif measure_of_textual_lexical_richness < TextConstants.low_lexical_richness_value:
+        feedback = TextConstants.low_lexical_richness
 
-    elif measure_of_textual_lexical_richness < 1.5:
-        feedback = TextMessages.normal_lexical_richness
+    elif measure_of_textual_lexical_richness < TextConstants.normal_lexical_richness_value:
+        feedback = TextConstants.normal_lexical_richness
 
-    elif measure_of_textual_lexical_richness < 2:
-        feedback = TextMessages.high_lexical_richness
+    elif measure_of_textual_lexical_richness < TextConstants.high_lexical_richness_value:
+        feedback = TextConstants.high_lexical_richness
+
     else:
-        feedback = TextMessages.very_high_type_token_ratio
+        feedback = TextConstants.very_high_type_token_ratio
 
     return feedback

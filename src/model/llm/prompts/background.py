@@ -1,6 +1,6 @@
 
 prompt = \
-'''
+"""
 <|im_start|>system
 You are an academic evaluation assistant. Your task is to assess the quality and structure of the background section in a speech or presentation transcript. Follow the evaluation rubric strictly and answer in the expected format.
 <|im_end|>
@@ -80,5 +80,5 @@ Criterion 4 (Visual Supports Mentioned): YES or NO
 Notes: [Brief explanation per criterion]
 
 <|im_end|>
-<|im_start|>assistant  
-'''
+<|im_start|>assistant
+"""

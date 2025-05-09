@@ -23,4 +23,4 @@ jobs:
         cache-dependency-glob: "uv.lock"
 
     - name: Run ruff
-      run: uvx ruff check src
+      run: uv run ruff check src

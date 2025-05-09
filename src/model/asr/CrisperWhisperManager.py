@@ -17,7 +17,7 @@ class CrisperWhisperManager:
         model = torch.compile(model)
         processor = AutoProcessor.from_pretrained(self.model_id)
         forced_language = ("<|en|>")
-        generate_kwargs = {"language": forced_language}
+        generate_kwargs = {"language": forced_language, "num_beams": 1}
 
         self.pipeline = pipeline(
             "automatic-speech-recognition",

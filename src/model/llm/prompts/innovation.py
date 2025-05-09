@@ -1,6 +1,6 @@
 
 prompt = \
-'''
+"""
 <|im_start|>system
 You are an academic evaluation assistant. Your task is to assess the **Innovation** section of a speech or presentation transcript. Follow the given criteria and answer with YES or NO for each. Provide brief justifications where applicable.
 <|im_end|>
@@ -36,5 +36,5 @@ Criterion 1 (Innovation and Key Features): YES or NO
 Notes: [Brief explanation or example related to the innovation mentioned in the speech]
 
 <|im_end|>
-<|im_start|>  
-'''
+<|im_start|>assistant
+"""

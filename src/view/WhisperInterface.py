@@ -4,7 +4,7 @@ import gradio as gr
 from matplotlib import pyplot as plt
 
 
-class Interface:
+class WhisperInterface:
     def __init__(self, function_ptr: Callable[[str, list[str]], list[Union[str, plt.Figure]]]) -> None:
         title = "Speech to Text App"
         css = "footer{display:none !important}"
@@ -36,12 +36,6 @@ class Interface:
                 with gr.Row():
                     frequencies_feedback = gr.Textbox(label="Frequencies feedback")
 
-            with gr.Tab("Speaking rate"):
-                with gr.Row():
-                    speaking_rate_plot = gr.Plot(label="Speaking rate")
-                with gr.Row():
-                    speaking_rate_feedback = gr.Textbox(label="Speaking rate feedback")
-
             with gr.Tab("RMS"):
                 with gr.Row():
                     rms_plot = gr.Plot(label="RMS plot")
@@ -54,7 +48,7 @@ class Interface:
                 with gr.Row():
                     snr_feedback = gr.Textbox(label="SNR feedback")
 
-            with gr.Tab("LLM feedback"):
+            with gr.Tab("LLM Feedback"):
                 with gr.Row():
                     introduction_feedback = gr.Markdown(label="Introduction feedback")
                 with gr.Row():
@@ -75,8 +69,6 @@ class Interface:
                     transcription,
                     frequencies_plot,
                     frequencies_feedback,
-                    speaking_rate_plot,
-                    speaking_rate_feedback,
                     rms_plot,
                     rms_feedback,
                     snr_plot,
