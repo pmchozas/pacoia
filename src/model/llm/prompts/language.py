@@ -39,7 +39,7 @@ Grade the **language quality** of the transcript according to the following crit
 
 ### Avoids:
 - Repetitions
-- Using the same term excessively in one sentence
+- Using the same term excessively
 
 **Answer with:** YES or NO
 

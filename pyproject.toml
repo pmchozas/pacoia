@@ -13,7 +13,8 @@ dependencies = [
     "python-dotenv==1.1.0",
     "numpy==2.2.5",
     "matplotlib==3.10.1",
-    "textstat==0.7.5"
+    "textstat==0.7.5",
+    "lexicalrichness==0.5.1"
 ]
 
 [project.optional-dependencies]

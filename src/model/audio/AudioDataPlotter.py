@@ -1,51 +1,38 @@
 import librosa
-import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
+def get_rms_plot(rms: np.ndarray) -> pd.DataFrame:
+    rms_ds, times_ds = downsample(rms, librosa.times_like(rms))
+    return pd.DataFrame({
+        "Time (s)": times_ds,
+        "RMS Energy": rms_ds
+    })
 
-def get_rms_plot(rms: np.ndarray) -> plt.Figure:
-    times = librosa.times_like(rms)
-    fig, ax = plt.subplots()
-
-    ax.plot(times, rms, label="RMS Energy", color="r")
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("RMS Energy")
-    ax.set_title("RMS Energy Over Time")
-
-    fig.set_size_inches(18, 5)
-
-    return fig
-
-
-def get_snr_plot(rms: np.ndarray) -> plt.Figure:
+def get_snr_plot(rms: np.ndarray) -> pd.DataFrame:
     window_size = 50
     noise_energy = np.array([np.percentile(rms[max(0, i - window_size):i + 1], 10) for i in range(len(rms))])
     noise_energy[noise_energy == 0] = 1e-10
     snr_over_time = 10 * np.log10(rms / noise_energy)
     times = librosa.times_like(rms)
-    fig, ax = plt.subplots()
+    
+    snr_ds, times_ds = downsample(snr_over_time, times)
+    return pd.DataFrame({
+        "Time (s)": times_ds,
+        "SNR Over Time": snr_ds
+    })
 
-    ax.plot(times, snr_over_time, label="SNR")
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("SNR")
-    ax.set_title("SNR Over Time")
+def get_speaking_rate_plot(rates: dict) -> pd.DataFrame:
+    return pd.DataFrame({
+        "Time (s)": list(rates.keys()),
+        "Words per minute": list(rates.values())
+    })
 
-    fig.set_size_inches(18, 5)
-
-    return fig
-
-
-def get_speaking_rate_plot(rates: dict, interval: int = 1) -> plt.Figure:
-    fig, ax = plt.subplots()
-
-    ax.plot(list(rates.keys()), list(rates.values()))
-
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("Words per minute")
-    ax.set_title("Speaking rate")
-
-    ax.set_xticks(np.arange(0, max(rates.keys()) + 1, interval))
-
-    fig.set_size_inches(18, 5)
-
-    return fig
+def downsample(array: np.ndarray, 
+               times: np.ndarray, 
+               max_points = 500) -> tuple[np.ndarray, np.ndarray]:
+    
+    step = max(1, len(array) // max_points)
+    rms_ds = array[::step]
+    times_ds = times[::step]
+    return rms_ds, times_ds

@@ -1,10 +1,17 @@
 import requests # type: ignore[import-untyped]
 
-from src.model.llm.prompts import background, description, innovation, introduction, language, organization, punctuation
+from src.model.llm.prompts import (
+    background, 
+    description, 
+    innovation, 
+    introduction, 
+    language, 
+    organization, 
+    punctuation
+)
 
 OK_STATUS = 200
 TIMEOUT_TIME = 200
-
 
 class LLMPeer:
     def __init__(self, endpoint: str = "http://localhost:11434/api/generate",
@@ -14,7 +21,7 @@ class LLMPeer:
         self.model_name = model_name
 
     def query_llm(self, prompt: str) -> str:
-        url = "http://localhost:11434/api/generate"
+        url = self.endpoint
         payload = {
             "model": self.model_name,
             "prompt": prompt,

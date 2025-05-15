@@ -54,7 +54,7 @@ Grade the **introduction** of a presentation based on the following three criter
 
 ### Observations:
 
-- The speaker might mention future sections, such as:
+- The speaker must mention future sections, such as:
   - **State of the Art** (also: Background, Literature Review, or Related Work)
   - **Innovation**
   - **Description** or **Methodology**

@@ -1,7 +1,6 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 
-
 class CrisperWhisperManager:
     def __init__(self, torch_dtype: torch.dtype, device: str) -> None:
         self.model_id = "nyrahealth/CrisperWhisper"

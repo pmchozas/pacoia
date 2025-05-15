@@ -1,7 +1,6 @@
+import pandas as pd
+
 from typing import Union
-
-import matplotlib.pyplot as plt
-
 from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
 from src.model.asr.WhisperManager import WhisperManager
 from src.model.audio import AudioAnalyzer, AudioDataPlotter, AudioFeedback
@@ -24,16 +23,19 @@ class Controller:
         else:
             self.asr_manager = WhisperManager(torch_dtype, device)
 
-    def generate_outputs_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, plt.Figure]]:
+    def generate_outputs_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, pd.DataFrame]]:
         speech_data = self.asr_manager.transcribe(audio_path)
-        word_frequencies = TextAnalyzer.get_word_frequencies(speech_data["text"])
+        word_frequencies = TextAnalyzer.get_words_distribution(speech_data["text"])
         rms = AudioAnalyzer.get_rms(audio_path)
         mean_snr = AudioAnalyzer.get_snr(rms)
 
         output = []
         output.append(speech_data["text"])
-        output.append(TextDataPlotter.get_frequencies_plot(word_frequencies))
-        output.append(TextFeedback.get_frequencies_feedback(word_frequencies))
+        output.append(TextDataPlotter.get_words_distribution_plot(word_frequencies))
+        output.append(TextFeedback.get_words_distribution_feedback(word_frequencies))
+        
+        output.append(TextFeedback.get_lexical_richness_feedback(speech_data["text"]))
+        output.append(TextFeedback.get_readability_feedback(speech_data["text"]))
 
         output.append(AudioDataPlotter.get_rms_plot(rms))
         output.append(AudioFeedback.get_rms_feedback(rms))
@@ -75,9 +77,9 @@ class Controller:
 
         return output
 
-    def generate_outputs_crisper_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, plt.Figure]]:
+    def generate_outputs_crisper_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, pd.DataFrame]]:
         speech_data = self.asr_manager.transcribe(audio_path)
-        word_frequencies = TextAnalyzer.get_word_frequencies(speech_data["text"])
+        word_frequencies = TextAnalyzer.get_words_distribution(speech_data["text"])
         rms = AudioAnalyzer.get_rms(audio_path)
         mean_snr = AudioAnalyzer.get_snr(rms)
         word_count = len(word_frequencies)
@@ -90,8 +92,11 @@ class Controller:
 
         output = []
         output.append(speech_data["text"])
-        output.append(TextDataPlotter.get_frequencies_plot(word_frequencies))
-        output.append(TextFeedback.get_frequencies_feedback(word_frequencies))
+        output.append(TextDataPlotter.get_words_distribution_plot(word_frequencies))
+        output.append(TextFeedback.get_words_distribution_feedback(word_frequencies))
+
+        output.append(TextFeedback.get_lexical_richness_feedback(speech_data["text"]))
+        output.append(TextFeedback.get_readability_feedback(speech_data["text"]))
 
         output.append(AudioDataPlotter.get_speaking_rate_plot(rates, length))
         output.append(AudioFeedback.get_speaking_rate_feedback(word_count, length))
