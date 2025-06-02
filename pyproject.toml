@@ -40,7 +40,12 @@ lint.ignore = [
     "FURB113",
     "D203",
     "D212",
-    "PLR0912"
+    "PLR0912",
+    "RUF003",
+    "ISC002",
+    "PLR0913",
+    "PLR0917",
+    "SIM117"
 ]
 fix = true
 cache-dir = ".ruff_cache"

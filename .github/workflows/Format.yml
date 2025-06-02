@@ -15,12 +15,16 @@ jobs:
       with:
         python-version-file: "pyproject.toml"
 
-    - name: Install uv
+    - name: Set up uv
       uses: astral-sh/setup-uv@v5
       with:
         version: "0.6.16"
         enable-cache: true
         cache-dependency-glob: "uv.lock"
+        args: sync --locked --all-extras
 
+    - name: Install dependencies
+      run: uv sync --locked --all-extras 
+      
     - name: Run ruff
       run: uv run ruff check src

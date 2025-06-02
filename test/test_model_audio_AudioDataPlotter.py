@@ -1,7 +1,7 @@
 import librosa
 import src.model.audio.AudioDataPlotter as AudioDataPlotter
 import src.model.audio.AudioAnalyzer as AudioAnalyzer
-import matplotlib.pyplot as plt
+import pandas as pd
 
 class TestAudioDataPlotter:
     def sample_rms(self):
@@ -10,14 +10,12 @@ class TestAudioDataPlotter:
 
     def test_get_rms_plot(self):
         plot = AudioDataPlotter.get_rms_plot(self.sample_rms())
-        assert type(plot) == plt.Figure
-        plt.close(plot)
+        assert type(plot) == pd.DataFrame
 
     def test_get_snr_plot(self):
         plot = AudioDataPlotter.get_rms_plot(self.sample_rms())
-        assert type(plot) == plt.Figure
-        plt.close(plot)
+        assert type(plot) == pd.DataFrame
 
     def test_get_speaking_rate_plot(self):
         speaking_rate = AudioAnalyzer.get_speaking_rate([{"text": "text", "timestamp": (0, 1)}], 1)
-        assert type(AudioDataPlotter.get_speaking_rate_plot(speaking_rate)) == plt.Figure
+        assert type(AudioDataPlotter.get_speaking_rate_plot(speaking_rate)) == pd.DataFrame

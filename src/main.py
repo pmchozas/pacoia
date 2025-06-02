@@ -9,6 +9,7 @@ from src.view.WhisperInterface import WhisperInterface
 
 logger = logging.getLogger(__name__)
 
+
 def main() -> None:
     logging.config.fileConfig("config/logging.conf")
 
@@ -28,6 +29,7 @@ def main() -> None:
     else:
         logger.error("Model '{model}' is not currently supported")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

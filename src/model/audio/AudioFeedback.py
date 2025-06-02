@@ -1,5 +1,7 @@
 from numpy import mean, ndarray
+
 from src.model.audio import AudioConstants
+
 
 def get_rms_feedback(rms: ndarray) -> str:
     mean_rms = mean(rms)
@@ -10,6 +12,7 @@ def get_rms_feedback(rms: ndarray) -> str:
         return AudioConstants.high_mean_rms
 
     return AudioConstants.normal_mean_rms
+
 
 def get_snr_feedback(mean_snr: float) -> str:
     if mean_snr < AudioConstants.very_low_mean_snr_value:
@@ -22,6 +25,7 @@ def get_snr_feedback(mean_snr: float) -> str:
         return AudioConstants.high_mean_snr
 
     return AudioConstants.very_high_snr
+
 
 def get_speaking_rate_feedback(word_count: int, length: int) -> str:
     mean_rate = word_count / length

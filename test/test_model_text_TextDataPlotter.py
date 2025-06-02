@@ -1,9 +1,9 @@
 import src.model.text.TextDataPlotter as TextDataPlotter
 import src.model.text.TextAnalyzer as TextAnalyzer
-import matplotlib.pyplot as plt
+import pandas as pd
 
 class TestTextDataPlotter:
 
-    def test_get_rms_plot(get_frequencies_plot):
-        frequencies = TextAnalyzer.get_word_frequencies("hola")
-        assert type(TextDataPlotter.get_frequencies_plot(frequencies)) == plt.Figure
+    def test_get_rms_plot(self):
+        frequencies = TextAnalyzer.get_words_distribution("hola")
+        assert type(TextDataPlotter.get_words_distribution_plot(frequencies)) == pd.DataFrame

@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 
+
 class WhisperManager:
     def __init__(self, torch_dtype: torch.dtype, device: str) -> None:
         self.model_id = "openai/whisper-small"

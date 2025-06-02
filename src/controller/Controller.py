@@ -1,6 +1,7 @@
+from typing import Union
+
 import pandas as pd
 
-from typing import Union
 from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
 from src.model.asr.WhisperManager import WhisperManager
 from src.model.audio import AudioAnalyzer, AudioDataPlotter, AudioFeedback
@@ -33,7 +34,7 @@ class Controller:
         output.append(speech_data["text"])
         output.append(TextDataPlotter.get_words_distribution_plot(word_frequencies))
         output.append(TextFeedback.get_words_distribution_feedback(word_frequencies))
-        
+
         output.append(TextFeedback.get_lexical_richness_feedback(speech_data["text"]))
         output.append(TextFeedback.get_readability_feedback(speech_data["text"]))
 
@@ -84,9 +85,11 @@ class Controller:
         mean_snr = AudioAnalyzer.get_snr(rms)
         word_count = len(word_frequencies)
         last_chunk_timestamp = speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"]
+        
         if not last_chunk_timestamp[1]:
             speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"] = \
                 (last_chunk_timestamp[0], last_chunk_timestamp[0])
+            
         length = speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"][1]
         rates = AudioAnalyzer.get_speaking_rate(speech_data["chunks"], length)
 
@@ -98,7 +101,7 @@ class Controller:
         output.append(TextFeedback.get_lexical_richness_feedback(speech_data["text"]))
         output.append(TextFeedback.get_readability_feedback(speech_data["text"]))
 
-        output.append(AudioDataPlotter.get_speaking_rate_plot(rates, length))
+        output.append(AudioDataPlotter.get_speaking_rate_plot(rates))
         output.append(AudioFeedback.get_speaking_rate_feedback(word_count, length))
 
         output.append(AudioDataPlotter.get_rms_plot(rms))

@@ -11,7 +11,7 @@ with background noise.
 """
 
 normal_mean_rms = \
-"""🟢​ Normal mean RMS (conversational speech): 0.05 - 0.2 \
+"""🟢\u200b Normal mean RMS (conversational speech): 0.05 - 0.2 \
 "Your speech is at a normal, conversational volume. This range is \
 "ideal for clear communication in most environments.
 """
@@ -43,7 +43,7 @@ affected, making it harder to follow the conversation.
 """
 
 normal_mean_snr = \
-"""🟢​ The audio is fairly clear, but there's noticeable background \
+"""🟢\u200b The audio is fairly clear, but there's noticeable background \
 noise. While the speech is still understandable, the quality can be \
 improved for a better listening experience.
 """
@@ -80,7 +80,7 @@ maintain a more natural rhythm.
 """
 
 normal_speaking_rate = \
-"""🟢​ Your speaking rate is within the normal range, making your speech \
+"""🟢\u200b Your speaking rate is within the normal range, making your speech \
 clear and easy to follow. This is ideal for most conversational \
 and presentation settings.
 """

@@ -3,6 +3,7 @@ from typing import Callable, Union
 import gradio as gr
 import pandas as pd
 
+
 class WhisperInterface:
     def __init__(self, function_ptr: Callable[[str, list[str]], list[Union[str, pd.DataFrame]]]) -> None:
         title = "PACOIA: Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico"
@@ -10,7 +11,7 @@ class WhisperInterface:
 
         with gr.Blocks(title=title, css=css, theme=gr.themes.Soft()) as self.blocks:
             with gr.Row():
-                gr.Markdown("# 📄​ Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico")
+                gr.Markdown("# 📄\u200b Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico")
             with gr.Row():
                 audio_box = gr.Audio(type="filepath")
             with gr.Row():
@@ -35,22 +36,22 @@ class WhisperInterface:
             with gr.Tab("Words Distribution"):
                 with gr.Row():
                     words_distribution_plot = gr.BarPlot(
-                        label="Words Distribution", 
+                        label="Words Distribution",
                         x="Word",
                         y="Appearances",
                         title="Words Distribution",
                         x_title="Words",
                         y_title="Appearances",
-                        x_axis_labels_visible=False
+                        x_axis_labels_visible=False,
                     )
                 with gr.Row():
                     words_distribution_feedback = gr.Markdown(label="Words Distribution Feedback", line_breaks=True)
 
-            with gr.Tab("Lexical Richness"):    
+            with gr.Tab("Lexical Richness"):
                 with gr.Row():
                     lexical_richness_feedback = gr.Markdown(label="Frequencies feedback", line_breaks=True)
-            
-            with gr.Tab("Readability"):    
+
+            with gr.Tab("Readability"):
                 with gr.Row():
                     readability_feedback = gr.Markdown(label="Frequencies feedback", line_breaks=True)
 
@@ -62,7 +63,7 @@ class WhisperInterface:
                         title="RMS Energy Over Time",
                         x_title="Time (s)",
                         y_title="RMS Energy",
-                        label="RMS Energy Plot"
+                        label="RMS Energy Plot",
                     )
                 with gr.Row():
                     rms_feedback = gr.Markdown(label="Intensity (RMS) feedback", line_breaks=True)
@@ -73,7 +74,7 @@ class WhisperInterface:
                         title="SNR Over Time",
                         x_title="Time (s)",
                         y_title="SNR",
-                        label="SNR Plot"
+                        label="SNR Plot",
                     )
                 with gr.Row():
                     snr_feedback = gr.Markdown(label="Noise (SNR) feedback", line_breaks=True)
