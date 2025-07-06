@@ -1,9 +1,9 @@
-import argparse
 import logging.config
 import sys
 
 from src.controller.Controller import Controller
 from src.model.llm.LLMPeer import LLMPeer
+from src.utils import Utils
 from src.view.Interface import Interface
 from src.view.WhisperInterface import WhisperInterface
 
@@ -11,16 +11,14 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
+    config = Utils.read_config()
+
     logging.config.fileConfig("config/logging.conf")
 
-    parser = argparse.ArgumentParser(
-        description="PACOIA project",
-    )
-    parser.add_argument("--model", required=True, type=str)
+    model = config["model"]
+    local = config["local"]
 
-    args = parser.parse_args()
-    model = args.model
-    controller = Controller(model, LLMPeer())
+    controller = Controller(model, local, LLMPeer())
 
     if model == "CrisperWhisper":
         Interface(controller.generate_outputs_crisper_whisper).blocks.launch(debug=True)

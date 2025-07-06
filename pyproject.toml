@@ -14,7 +14,8 @@ dependencies = [
     "numpy==2.2.5",
     "matplotlib==3.10.1",
     "textstat==0.7.5",
-    "lexicalrichness==0.5.1"
+    "lexicalrichness==0.5.1",
+    "openai==1.93.0"
 ]
 
 [project.optional-dependencies]
@@ -45,7 +46,9 @@ lint.ignore = [
     "ISC002",
     "PLR0913",
     "PLR0917",
-    "SIM117"
+    "SIM117",
+    "FBT001",
+    "PTH123"
 ]
 fix = true
 cache-dir = ".ruff_cache"

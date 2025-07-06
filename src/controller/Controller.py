@@ -4,6 +4,7 @@ import pandas as pd
 
 from src.model.asr.CrisperWhisperManager import CrisperWhisperManager
 from src.model.asr.WhisperManager import WhisperManager
+from src.model.asr.WhisperPeer import WhisperPeer
 from src.model.audio import AudioAnalyzer, AudioDataPlotter, AudioFeedback
 from src.model.llm.LLMPeer import LLMPeer
 from src.model.text import TextAnalyzer, TextDataPlotter, TextFeedback
@@ -11,7 +12,7 @@ from src.utils import Utils
 
 
 class Controller:
-    def __init__(self, model: str, llm_peer: LLMPeer) -> None:
+    def __init__(self, model: str, local: bool, llm_peer: LLMPeer) -> None:
         Utils.login_hf()
         device = Utils.default_device()
         torch_dtype = Utils.default_dtype()
@@ -19,10 +20,12 @@ class Controller:
         self.llm_peer = llm_peer
 
         if model == "CrisperWhisper":
-            self.asr_manager: Union[WhisperManager, CrisperWhisperManager] = \
+            self.asr_manager: Union[WhisperManager, CrisperWhisperManager, WhisperPeer] = \
                 CrisperWhisperManager(torch_dtype, device)
-        else:
+        elif local:
             self.asr_manager = WhisperManager(torch_dtype, device)
+        else:
+            self.asr_manager = WhisperPeer()
 
     def generate_outputs_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, pd.DataFrame]]:
         speech_data = self.asr_manager.transcribe(audio_path)
@@ -85,13 +88,13 @@ class Controller:
         mean_snr = AudioAnalyzer.get_snr(rms)
         word_count = len(word_frequencies)
         last_chunk_timestamp = speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"]
-        
+
         if not last_chunk_timestamp[1]:
             speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"] = \
                 (last_chunk_timestamp[0], last_chunk_timestamp[0])
-            
+
         length = speech_data["chunks"][len(speech_data["chunks"]) - 1]["timestamp"][1]
-        rates = AudioAnalyzer.get_speaking_rate(speech_data["chunks"], length)
+        rates = AudioAnalyzer.get_speaking_rate(speech_data["chunks"], int(length))
 
         output = []
         output.append(speech_data["text"])

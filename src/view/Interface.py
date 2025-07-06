@@ -9,7 +9,7 @@ class Interface:
         title = "PACOIA: Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico"
         css = "footer{display:none !important}"
 
-        with gr.Blocks(title=title, css=css) as self.blocks:
+        with gr.Blocks(title=title, css=css, theme=gr.themes.Soft()) as self.blocks:
             with gr.Row():
                 gr.Markdown("# 📄 Plataforma Automatizada para la evaluación de Comunicación Oral en Inglés Académico")
             with gr.Row():

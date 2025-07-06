@@ -17,10 +17,12 @@ uv sync --locked --all-extras --dev
 
 ## Usage
 ```bash
-uv run -m src.main --model <model>
+uv run -m src.main
 ```
 
 Currently the only supported ASR models are `CrisperWhisper` and `Whisper`
+
+To disable the local execution of the ASR model, and enable the usage of the OpenAI API you must assign your OpenAI key to the environmental variable `OPENAI_API_KEY` and put the `config/config.json` option `local` to `false`.
 
 > [!NOTE]  
 > In order to use CrisperWhisper you must generate a token [here](https://huggingface.co/nyrahealth/CrisperWhisper) and assign it to the environmental variable `HF_TOKEN`, where the token will be read by the application
