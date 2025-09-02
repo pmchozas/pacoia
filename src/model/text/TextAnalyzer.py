@@ -18,8 +18,8 @@ def get_words_distribution(text: str) -> dict[str, int]:
     frequencies = Counter(lower_case_words)
     return dict(sorted(frequencies.items(), key=itemgetter(1), reverse=True))
 
-# Readability Metrics
 
+# Readability Metrics
 
 def get_flesch_reading_ease(text: str) -> float:
     return textstat.flesch_reading_ease(text)

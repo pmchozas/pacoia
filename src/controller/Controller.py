@@ -27,7 +27,10 @@ class Controller:
         else:
             self.asr_manager = WhisperPeer()
 
-    def generate_outputs_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, pd.DataFrame]]:
+    def generate_outputs_whisper(self, audio_path: str, base_option: str, sections: list[str], additional_sections: list[str]) -> Union[tuple[str, str], list[Union[str, pd.DataFrame]]]:
+        if base_option == "Audio":
+            return self.llm_peer.get_audio_based_feedback(audio_path)
+
         speech_data = self.asr_manager.transcribe(audio_path)
         word_frequencies = TextAnalyzer.get_words_distribution(speech_data["text"])
         rms = AudioAnalyzer.get_rms(audio_path)
@@ -49,39 +52,52 @@ class Controller:
 
         punctuated_transcription = self.llm_peer.get_punctuated_transcription(speech_data["text"])
 
-        if "Introduction" in options:
+        if "Introduction" in sections:
             output.append(self.llm_peer.get_introduction_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Background" in options:
+        if "Background" in sections:
             output.append(self.llm_peer.get_background_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Innovation" in options:
+        if "Innovation" in sections:
             output.append(self.llm_peer.get_innovation_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Description" in options:
+        if "Description" in sections:
             output.append(self.llm_peer.get_description_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Organization" in options:
+        if "Organization" in additional_sections:
             output.append(self.llm_peer.get_organization_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Language" in options:
+        if "Language" in additional_sections:
             output.append(self.llm_peer.get_language_evaluation(punctuated_transcription))
+        else:
+            output.append("")
+
+        if "Highlight Words" in additional_sections:
+            output.append(self.llm_peer.get_highlighted_words(punctuated_transcription))
+        else:
+            output.append("")
+
+        if "Topic and Related Words" in additional_sections:
+            output.append(self.llm_peer.get_topic_words(punctuated_transcription))
         else:
             output.append("")
 
         return output
 
-    def generate_outputs_crisper_whisper(self, audio_path: str, options: list[str]) -> list[Union[str, pd.DataFrame]]:
+    def generate_outputs_crisper_whisper(self, audio_path: str, base_option: str, sections: list[str], additional_sections: list[str]) -> Union[tuple[str, str], list[Union[str, pd.DataFrame]]]:
+        if base_option == "Audio":
+            return self.llm_peer.get_audio_based_feedback(audio_path)
+
         speech_data = self.asr_manager.transcribe(audio_path)
         word_frequencies = TextAnalyzer.get_words_distribution(speech_data["text"])
         rms = AudioAnalyzer.get_rms(audio_path)
@@ -115,33 +131,43 @@ class Controller:
 
         punctuated_transcription = self.llm_peer.get_punctuated_transcription(speech_data["text"])
 
-        if "Introduction" in options:
+        if "Introduction" in sections:
             output.append(self.llm_peer.get_introduction_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Background" in options:
+        if "Background" in sections:
             output.append(self.llm_peer.get_background_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Innovation" in options:
+        if "Innovation" in sections:
             output.append(self.llm_peer.get_innovation_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Description" in options:
+        if "Description" in sections:
             output.append(self.llm_peer.get_description_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Organization" in options:
+        if "Organization" in additional_sections:
             output.append(self.llm_peer.get_organization_evaluation(punctuated_transcription))
         else:
             output.append("")
 
-        if "Language" in options:
+        if "Language" in additional_sections:
             output.append(self.llm_peer.get_language_evaluation(punctuated_transcription))
+        else:
+            output.append("")
+
+        if "Highlight Words" in additional_sections:
+            output.append(self.llm_peer.get_highlighted_words(punctuated_transcription))
+        else:
+            output.append("")
+
+        if "Topic and Related Words" in additional_sections:
+            output.append(self.llm_peer.get_topic_words(punctuated_transcription))
         else:
             output.append("")
 

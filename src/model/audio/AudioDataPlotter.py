@@ -4,10 +4,16 @@ import pandas as pd
 
 
 def get_rms_plot(rms: np.ndarray) -> pd.DataFrame:
+    low_threshold = 0.05
+    high_threshold = 0.2
     rms_ds, times_ds = downsample(rms, librosa.times_like(rms))
+
     return pd.DataFrame({
-        "Time (s)": times_ds,
-        "RMS Energy": rms_ds,
+        "x": list(times_ds) * 3,
+        "y": list(rms_ds) + [low_threshold] * len(times_ds) + [high_threshold] * len(times_ds),
+        "name": ["RMS"] * len(times_ds) +
+                ["Low RMS"] * len(times_ds) +
+                ["High RMS"] * len(times_ds),
     })
 
 
@@ -17,11 +23,16 @@ def get_snr_plot(rms: np.ndarray) -> pd.DataFrame:
     noise_energy[noise_energy == 0] = 1e-10
     snr_over_time = 10 * np.log10(rms / noise_energy)
     times = librosa.times_like(rms)
+    low_threshold = 10
+    high_threshold = 20
 
     snr_ds, times_ds = downsample(snr_over_time, times)
     return pd.DataFrame({
-        "Time (s)": times_ds,
-        "SNR Over Time": snr_ds,
+        "x": list(times_ds) * 3,
+        "y": list(snr_ds) + [low_threshold] * len(times_ds) + [high_threshold] * len(times_ds),
+        "name": ["SNR"] * len(times_ds) +
+                ["Low SNR"] * len(times_ds) +
+                ["High SNR"] * len(times_ds),
     })
 
 

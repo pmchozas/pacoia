@@ -24,22 +24,22 @@ def get_words_distribution_feedback(word_frequencies: dict[str, int]) -> str:
 def get_lexical_richness_feedback(text: str) -> str:
     lex = LexicalRichness(text)
 
-    feedback = "## 🧠 Lexical Richness Metrics\n\n"
+    feedback = "### Lexical Richness Metrics\n\n"
 
     cttr = TextAnalyzer.get_cttr(lex)
-    feedback += f"**Corrected Type-Token Ratio (CTTR):** {cttr:.2f}"
+    feedback += f"**Corrected Type-Token Ratio (CTTR):** {cttr:.2f} (+{LexRichCons.low_cttr_value})"
     feedback += get_cttr_feedback(cttr)
 
     yulek = TextAnalyzer.get_yulek(lex)
-    feedback += f"**Yule's K:** {yulek:.2f}"
+    feedback += f"**Yule's K:** {yulek:.2f} (0-{LexRichCons.high_yulek_value})"
     feedback += get_yulek_feedback(yulek)
 
     simpsond = TextAnalyzer.get_simpsond(lex)
-    feedback += f"**Simpson's D:** {simpsond:.2f}"
+    feedback += f"**Simpson's D:** {simpsond:.2f} (0-{LexRichCons.low_simpsond_value})"
     feedback += get_simpsond_feedback(simpsond)
 
     herdan = TextAnalyzer.get_herdan(lex)
-    feedback += f"**Herdan's lexical diversity measure:** {herdan:.2f}"
+    feedback += f"**Herdan's lexical diversity measure:** {herdan:.2f} (+{LexRichCons.low_herdan_value})"
     feedback += get_herdan_feedback(herdan)
 
     overall_score = get_lexical_richness_overall_score(cttr, yulek, simpsond, herdan)
@@ -49,22 +49,22 @@ def get_lexical_richness_feedback(text: str) -> str:
 
 
 def get_readability_feedback(text: str) -> str:
-    feedback = "## 📘\u200b Readability Metrics\n\n"
+    feedback = "### Readability Metrics\n\n"
 
     flesch_reading_ease = TextAnalyzer.get_flesch_reading_ease(text)
-    feedback += f"**Flesch Reading Ease:** {flesch_reading_ease:.2f}"
+    feedback += f"**Flesch Reading Ease:** {flesch_reading_ease:.2f} (+{ReadCons.low_flesch_reading_ease_value})"
     feedback += get_flesch_reading_ease_feedback(flesch_reading_ease)
 
     flesch_kincaid_grade = TextAnalyzer.get_flesch_kincaid_grade(text)
-    feedback += f"**Flesch Kincaid Grade:** {flesch_kincaid_grade:.2f}"
+    feedback += f"**Flesch Kincaid Grade:** {flesch_kincaid_grade:.2f} (0-{ReadCons.low_flesch_kincaid_grade_value})"
     feedback += get_flesch_kincaid_grade_feedback(flesch_kincaid_grade)
 
     dale_chall_readability_score = TextAnalyzer.get_dale_chall_readability_score(text)
-    feedback += f"**Dale Chall Readability Score:** {dale_chall_readability_score:.2f}"
+    feedback += f"**Dale Chall Readability Score:** {dale_chall_readability_score:.2f} (0-{ReadCons.high_dale_chall_readability_score_value})"
     feedback += dale_chall_readability_score_feedback(dale_chall_readability_score)
 
     smog_index = TextAnalyzer.get_smog_index(text)
-    feedback += f"**SMOG Index:** {smog_index:.2f}"
+    feedback += f"**SMOG Index:** {smog_index:.2f} (0-{ReadCons.low_smog_index_value})"
     feedback += get_smog_index_feedback(smog_index)
 
     overall_score = get_readibility_overall_score(

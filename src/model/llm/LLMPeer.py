@@ -1,6 +1,19 @@
-import requests  # type: ignore[import-untyped]
+import base64
 
-from src.model.llm.prompts import background, description, innovation, introduction, language, organization, punctuation
+import requests  # type: ignore[import-untyped]
+from openai import OpenAI
+
+from src.model.llm.prompts import (
+    background,
+    description,
+    highlight_words,
+    innovation,
+    introduction,
+    language,
+    organization,
+    punctuation,
+    topic_words,
+)
 
 OK_STATUS = 200
 TIMEOUT_TIME = 200
@@ -54,3 +67,51 @@ class LLMPeer:
 
     def get_organization_evaluation(self, transcription: str) -> str:
         return f"## Organization Feedback\n{self.query_llm(organization.prompt.format(transcription))}"
+
+    def get_highlighted_words(self, transcription: str) -> str:
+        return f"## Highlighted Words\n{self.query_llm(highlight_words.prompt.format(transcription))}"
+
+    def get_topic_words(self, transcription: str) -> str:
+        return f"## Topic and Related Words\n{self.query_llm(topic_words.prompt.format(transcription))}"
+
+    @staticmethod
+    def get_audio_based_feedback(audio_path: str) -> tuple[str, str]:
+        try:
+            client = OpenAI()
+        except:
+            return "You need a valid OpenAI API Key", "Fail"
+
+        with open(audio_path, "rb") as audio_file:
+            completion = client.chat.completions.create(
+                model="gpt-4o-audio-preview",
+                modalities=["text", "audio"],
+                audio={"voice": "alloy", "format": "mp3"},
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": """
+                                    You are a speech coach and language expert. Analyze the following speech and give the following insights:
+                                    1. Grammar corrections and explanations.
+                                    2. Feedback on pronunciation.
+                                    3. Feedback on tone and emotional intensity—was it flat, overly intense, or appropriate?
+                                    4. Suggestions for improving word choice, pacing, and delivery.
+                                    5. Output everything in clear bullet points or markdown.""",
+                            },
+                            {
+                                "type": "input_audio",
+                                "input_audio": {
+                                    "data": base64.b64encode(audio_file.read()).decode("utf-8"),
+                                    "format": "mp3",
+                                },
+                            },
+                        ],
+                    },
+                ],
+            )
+        if not completion.choices[0].message.audio:
+            return "There was an error connecting to OpenAI Platform", "Fail"
+
+        return str(completion.choices[0].message.audio.transcript), "OK"

@@ -7,7 +7,7 @@ You are an academic evaluation assistant. Your task is to assess the quality and
 <|im_start|>user
 # Evaluation Task
 
-Grade the **background section** of a transcript based on the following criteria. Answer each with **YES or NO** and support your decision with brief observations.
+Grade the **background section** of a transcript based on the following criteria. Answer each with **🟢 YES or 🔴 NO** and support your decision with brief observations.
 
 ---
 
@@ -15,7 +15,7 @@ Grade the **background section** of a transcript based on the following criteria
 
 > Does the speaker refer to any previous or foundational work?
 
-**Answer with:** YES or NO
+**Answer with:** 🟢 YES or 🔴 NO
 
 ---
 
@@ -23,7 +23,7 @@ Grade the **background section** of a transcript based on the following criteria
 
 > Does the speaker mention related work in the field, by other authors or creators?
 
-**Answer with:** YES or NO
+**Answer with:** 🟢 YES or 🔴 NO
 
 ### Valid Examples:
 - Previous or related studies (e.g., academic papers, surveys)
@@ -36,7 +36,7 @@ Grade the **background section** of a transcript based on the following criteria
 
 > Does the speaker mention any limitations or challenges of previous approaches?
 
-**Answer with:** YES or NO
+**Answer with:** 🟢 YES or 🔴 NO
 
 ### Look for:
 - Gaps
@@ -51,7 +51,7 @@ Grade the **background section** of a transcript based on the following criteria
 
 > Does the speech mention the use of visual supports or multimedia?
 
-**Answer with:** YES or NO
+**Answer with:** 🟢 YES or 🔴 NO
 
 ### Look for:
 - Diagrams
@@ -72,10 +72,10 @@ Grade the **background section** of a transcript based on the following criteria
 
 Return your evaluation using the exact format below:
 
-Criterion 1 (Previous Work): YES or NO
-Criterion 2 (Related Work by Others): YES or NO
-Criterion 3 (Limitations Mentioned): YES or NO
-Criterion 4 (Visual Supports Mentioned): YES or NO
+Criterion 1 (Previous Work): 🟢 YES or 🔴 NO
+Criterion 2 (Related Work by Others): 🟢 YES or 🔴 NO
+Criterion 3 (Limitations Mentioned): 🟢 YES or 🔴 NO
+Criterion 4 (Visual Supports Mentioned): 🟢 YES or 🔴 NO
 
 Notes: [Brief explanation per criterion]
 
