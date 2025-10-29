@@ -63,6 +63,55 @@ To introduce a contrasting view
 
 ---
 
+## Criterion 4: Emphasis
+
+> Does the speech show **emphasis**?
+
+### Look for:
+- Repetitions of words
+- The use of adjectives
+- The use of common phrasing such as "As we have explained", "The most important idea is", "This is important because"
+
+**Answer with:** 🟢 YES or 🔴 NO
+
+---
+
+## Criterion 5: Visual Aids
+
+> Does the speech contain **mentions to visual aids**?
+
+### Look for:
+- Expressions such as "As shown in the previous slide"
+- Expressions such as "As shown in the diagram"
+- Expressions such as "As shown in the figure"
+
+**Answer with:** 🟢 YES or 🔴 NO
+---
+
+## Criterion 6: Parallel structures
+
+> Does the speech respect **parallel structures**  in an enumeration or listing?
+
+### Look for:
+- The same structure in enumerations, for examle: "First, we explain the idea. Second, we describe the problem. Third, we find a solution."
+
+**Answer with:** 🟢 YES or 🔴 NO
+
+---
+
+## Criterion 7: Closing
+
+> Does the speech conclude with a proper **closing**?
+
+### Look for:
+- Mentions to a brief summary of the speech
+- Mentions to a brief summary of the problems and the contribution to solve them
+- If applicable, an answer to a question previously mentioned in the speech
+
+**Answer with:** 🟢 YES or 🔴 NO
+
+---
+
 ## Transcription Input
 
 {}
@@ -74,6 +123,10 @@ To introduce a contrasting view
 Criterion 1 (Connecting Devices and Signposts): 🟢 YES or 🔴 NO
 Criterion 2 (Closing Summary or Objectives): 🟢 YES or 🔴 NO
 Criterion 3 (Invitation to Ask Questions): 🟢 YES or 🔴 NO
+Criterion 4 (Emphasis): 🟢 YES or 🔴 NO
+Criterion 5 (Visual Aids): 🟢 YES or 🔴 NO 
+Criterion 6 (Parallel Structures): 🟢 YES or 🔴 NO
+Criterion 7 (Closing): 🟢 YES or 🔴 NO
 
 Notes: [Short observation or example per criterion, if applicable]
 

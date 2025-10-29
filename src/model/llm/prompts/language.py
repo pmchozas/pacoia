@@ -19,6 +19,7 @@ Grade the **language quality** of the transcript according to the following crit
 - Slang
 - Contractions (e.g., "don't", "can't")
 - Casual expressions or gap fillers ("you know", "like", "uh", etc.)
+- Subjective or biased expressions
 
 **Answer with:** 🟢 YES or 🔴 NO
 
@@ -60,6 +61,44 @@ Authors can use certain keywords and phrases such as “possibly,” “indicate
 
 ---
 
+## Criterion 5: Reporting Verbs
+
+> Does the speech contain **reporting verbs**?
+
+### Look for:
+- Reporting verbs such as: "suggest", "demonstrate", "highlight", "claim" and "indicate".
+
+
+**Answer with:** 🟢 YES or 🔴 NO
+
+---
+
+## Criterion 6: Rich Nominalization
+
+> Does the speech contain **rich nominalization**?
+
+### Look for:
+- Adjectives and verbs transformed into adjectives, to show a richer vocabulary, for example: "improve → improvement" or "accurate → accuracy".
+
+
+**Answer with:** 🟢 YES or 🔴 NO
+
+---
+
+## Criterion 7: Cleft Sentences
+
+> Does the speech contain **cleft sentences** to express emphasis?
+
+### Common Types of Cleft Sentences:
+- It + be + emphasized element + (that/who) + clause. For example: "It was this challenge that brought us into question..."
+- What + clause + be + emphasized element. For example: "What this project aims to show..."
+- Emphasized element + be + what + clause. For example: "Machine learning is what..."
+
+
+**Answer with:** 🟢 YES or 🔴 NO
+
+---
+
 ## Transcription Input
 
 {}
@@ -72,6 +111,9 @@ Criterion 1 (Formality): 🟢 YES or 🔴 NO
 Criterion 2 (Hedging Language): 🟢 YES or 🔴 NO
 Criterion 3 (Lexical Diversity): 🟢 YES or 🔴 NO
 Criterion 4 (Grammatical Accuracy): 🟢 YES or 🔴 NO
+Criterion 5 (Reporting Verbs): 🟢 YES or 🔴 NO
+Criterion 6 (Rich Nominalization): 🟢 YES or 🔴 NO
+Criterion 7 (Cleft Sentences): 🟢 YES or 🔴 NO
 
 Notes: [Short observation or example per criterion, if applicable]
 

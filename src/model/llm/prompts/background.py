@@ -13,7 +13,7 @@ Grade the **background section** of a transcript based on the following criteria
 
 ## Criterion 1: Reference to Prior Work
 
-> Does the speaker refer to any previous or foundational work?
+> Does the speaker refer to any **previous work** to address the topic of the research proposal?
 
 **Answer with:** 🟢 YES or 🔴 NO
 

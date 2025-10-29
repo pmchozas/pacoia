@@ -15,9 +15,9 @@ Grade the **introduction** of a presentation based on the following three criter
 
 > Does the speech begin with a specific sentence that intends to grab the audience's attention?
 
-**Answer with:** YES or 🔴 NO
+**Answer with:** 🟢 YES or 🔴 NO
 
-### Valid Types of Attention-Grabbers:
+### Examples of Attention-Grabbers:
 
 - ** A statistic:**
   _Example:_ “Did you know that 80% of the items we own are never used?”
@@ -58,11 +58,11 @@ Grade the **introduction** of a presentation based on the following three criter
 
 > Does the speech set the theme or introduce the topic clearly within the first paragraph?
 
-**Answer with:** YES or 🔴 NO
+**Answer with:** 🟢 YES or 🔴 NO
 
 ### Observations:
 
-- The speaker usually refers to a product, system, website, or service.
+- The speaker usually refers to an algorithm, product, system, website, or service.
 - The topic is often related to **AI** or a named application/platform.
 
 ---
@@ -71,7 +71,7 @@ Grade the **introduction** of a presentation based on the following three criter
 
 > Does the introduction describe the outline of the presentation?
 
-**Answer with:** YES or 🔴 NO
+**Answer with:** 🟢 YES or 🔴 NO
 
 ### Observations:
 
@@ -92,9 +92,9 @@ Grade the **introduction** of a presentation based on the following three criter
 
 Please return your evaluation in the following format:
 
-Criterion 1 (Attention Grabber): YES or 🔴 NO
-Criterion 2 (Topic Introduction): YES or 🔴 NO
-Criterion 3 (Structural Outline): YES or 🔴 NO
+Criterion 1 (Attention Grabber): 🟢 YES or 🔴 NO
+Criterion 2 (Topic Introduction): 🟢 YES or 🔴 NO
+Criterion 3 (Structural Outline): 🟢 YES or 🔴 NO
 
 Notes: [Brief explanation per criterion]
 

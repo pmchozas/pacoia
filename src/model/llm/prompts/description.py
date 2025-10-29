@@ -15,6 +15,9 @@ Grade the **Description section** of the transcript according to the following c
 
 > Does the speaker mention the **architecture** of the application?
 
+### Look for:
+- Mentions to synonym keywords such as: diagram, figure, workflow, pipeline, or image.
+
 **Answer with:** 🟢 YES or 🔴 NO
 
 ---
