@@ -24,7 +24,6 @@ Grade the **Innovation section** of the transcript according to the following cr
 
 ---
 
-
 ## Criterion 2: Research Problem and Limitations covered
 
 > Does the speech mention the specific **research problem** that the proposal covers?
@@ -44,6 +43,8 @@ Grade the **Innovation section** of the transcript according to the following cr
 ### Look for:
 - Mentions to the general solution proposed.
 - Mentions to all the tecnologies and data sources involved in the solution. 
+
+---
 
 **Answer with:** 🟢 YES or 🔴 NO
 
