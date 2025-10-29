@@ -124,7 +124,7 @@ Criterion 1 (Connecting Devices and Signposts): 🟢 YES or 🔴 NO
 Criterion 2 (Closing Summary or Objectives): 🟢 YES or 🔴 NO
 Criterion 3 (Invitation to Ask Questions): 🟢 YES or 🔴 NO
 Criterion 4 (Emphasis): 🟢 YES or 🔴 NO
-Criterion 5 (Visual Aids): 🟢 YES or 🔴 NO 
+Criterion 5 (Visual Aids): 🟢 YES or 🔴 NO
 Criterion 6 (Parallel Structures): 🟢 YES or 🔴 NO
 Criterion 7 (Closing): 🟢 YES or 🔴 NO
 

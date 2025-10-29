@@ -42,7 +42,7 @@ Grade the **Innovation section** of the transcript according to the following cr
 
 ### Look for:
 - Mentions to the general solution proposed.
-- Mentions to all the tecnologies and data sources involved in the solution. 
+- Mentions to all the tecnologies and data sources involved in the solution.
 
 ---
 
@@ -58,7 +58,7 @@ Grade the **Innovation section** of the transcript according to the following cr
 
 Criterion 1 (Innovation and Key Features): 🟢 YES or 🔴 NO
 Criterion 2 (Research Problem and Limitations covered): 🟢 YES or 🔴 NO
-Criterion 3 (Solution Overview): 🟢 YES or 🔴 NO 
+Criterion 3 (Solution Overview): 🟢 YES or 🔴 NO
 Notes: [Brief explanation or example related to the innovation mentioned in the speech]
 
 <|im_end|>
