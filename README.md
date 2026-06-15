@@ -1,5 +1,4 @@
 # PACOIA project
-![CI](https://github.com/pmchozas/pacoia/actions/workflows/CI.yml/badge.svg)
 
 PACOIA: A GenAI-Driven Framework for the Automated Evaluation of Oral Presentations in EAP
 
